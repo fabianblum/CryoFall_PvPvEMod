@@ -35,8 +35,9 @@
             // mobs
             scripts
                 .Add(GetScript<SpawnMobsCloakedLizard>().Configure(densityMultiplier: 0.5))
+                .Add(GetScript<SpawnMobDesertPrincess>())
                 .Add(GetScript<SpawnMobsHoneyBadger>())
-                .Add(GetScript<SpawnMobsPangolin>())
+                .Add(GetScript<SpawnMobsAngryPangolin>())
                 .Add(GetScript<SpawnMobsSnakeBrown>())
                 .Add(GetScript<SpawnMobsHyena>())
                 .Add(GetScript<SpawnMobsThumper>())

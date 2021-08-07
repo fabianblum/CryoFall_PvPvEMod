@@ -1215,7 +1215,7 @@
             }
 
             if (byCharacter is not null
-                && byCharacter.IsNpc)
+                && byCharacter.IsNpc && byCharacter.ProtoGameObject is not ProtoCharacterMobEnraged)
             {
                 // no raid block by NPC damage
                 return;
