@@ -501,7 +501,7 @@
                 data.PrivateState.Origin = FindProtoEntities<ProtoCharacterOrigin>().FirstOrDefault();
             }
 
-            ServerPlayerSpawnManager.ServerAddTorchItemIfNoItems(character);
+            ServerPlayerSpawnManager.ServerAddInitItems(character);
 
             WorldDiscoverySystem.Instance.ServerDiscoverWorldChunks(
                 character,

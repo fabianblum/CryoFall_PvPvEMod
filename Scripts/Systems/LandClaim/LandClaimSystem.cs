@@ -1203,7 +1203,6 @@
         {
             if (PveSystem.ServerIsPvE || PveZone.IsPveZone(byCharacter))
             {
-                Logger.Warning("[PvE] 8");
                 // no land claim raids on PvE
                 return;
             }
@@ -1215,7 +1214,7 @@
             }
 
             if (byCharacter is not null
-                && byCharacter.IsNpc)
+                && byCharacter.IsNpc && byCharacter.ProtoGameObject is not ProtoCharacterMobEnraged)
             {
                 // no raid block by NPC damage
                 return;

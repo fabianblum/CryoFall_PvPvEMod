@@ -829,7 +829,6 @@
                 return VehicleCanBuildCheckResult.NotInteractingWithVehicleBay;
             }
 
-            Logger.Warning("[PvE] Is buildable: " + IsBuildableInPveZone);
             if (!IsBuildableInPveZone && PveZone.IsPveZone(character.Position.ToVector2Ushort()))
             {
                 return VehicleCanBuildCheckResult.NotInPveZone;
