@@ -30,7 +30,7 @@
       compatibleAmmoProtos = null;
 
       overrideDamageDescription = new DamageDescription(
-          damageValue: 500,
+          damageValue: 700,
           armorPiercingCoef: 1.0,
           finalDamageMultiplier: 1,
           rangeMax: 1.5,
