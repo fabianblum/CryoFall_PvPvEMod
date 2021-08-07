@@ -43,9 +43,15 @@
                 return false;
             }
 
-            
-            var pveArea = ZonePvE.Instance.ServerZoneInstance;
-            return pveArea.IsContainsPosition(character.Position.ToVector2Ushort());
+            if (character.Position.ToVector2Ushort().Y < 9879)
+            {
+                return true;
+            }
+
+            return false;
+
+            //var pveArea = ZonePvE.Instance.ServerZoneInstance;
+            //return pveArea.IsContainsPosition(character.Position.ToVector2Ushort());
         }
 
         public static bool IsPveZone(Vector2Ushort position)
@@ -74,9 +80,16 @@
             {
                 return false;
             }
-            
-            var pveArea = ZonePvE.Instance.ServerZoneInstance;
-            return pveArea.IsContainsPosition(WorldMapResourceMarksSystem.SharedGetObjectCenterPosition(worldObj));
+
+            if (WorldMapResourceMarksSystem.SharedGetObjectCenterPosition(worldObj).Y < 9879)
+            {
+                return true;
+            }
+
+            return false;
+
+            //var pveArea = ZonePvE.Instance.ServerZoneInstance;
+            //return pveArea.IsContainsPosition(WorldMapResourceMarksSystem.SharedGetObjectCenterPosition(worldObj));
         }
     }
 }
