@@ -19,8 +19,8 @@
     public override void SharedOnHit(WeaponFinalCache weaponCache, IWorldObject damagedObject, double damage, WeaponHitData hitData, out bool isDamageStop)
     {
       weaponCache.AllowNpcToNpcDamage = true;
-      
-      base.SharedOnHit(weaponCache, damagedObject, damage, hitData, out isDamageStop);
+
+        base.SharedOnHit(weaponCache, damagedObject, damage, hitData, out isDamageStop);
     }
 
     protected override void PrepareProtoWeapon(
@@ -31,7 +31,7 @@
       compatibleAmmoProtos = null;
 
       overrideDamageDescription = new DamageDescription(
-          damageValue: 100,
+          damageValue: 30,
           armorPiercingCoef: 0.5,
           finalDamageMultiplier: 1,
           rangeMax: 2.0,

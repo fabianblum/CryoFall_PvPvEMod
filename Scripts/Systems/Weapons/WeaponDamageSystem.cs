@@ -37,7 +37,7 @@
         double damagePreMultiplier,
         bool clampDefenseTo1)
     {
-      bool restrictedPvP = ServerIsRestrictedPvPDamage(weaponCache,
+            bool restrictedPvP = ServerIsRestrictedPvPDamage(weaponCache,
                                         targetObject,
                                         out var isPvPcase,
                                         out var isFriendlyFireCase);
@@ -84,6 +84,7 @@
       }
 
 
+      var totalDamage = 0d;
       if (weaponCache.Character?.ProtoGameObject is ProtoCharacterMobEnraged) //MOD
       {
         if (targetObject is IStaticWorldObject staticWorldObject2
@@ -97,7 +98,7 @@
       var damageValue = damagePreMultiplier * weaponCache.DamageValue;
       var invertedArmorPiercingCoef = weaponCache.InvertedArmorPiercingCoef;
 
-      var totalDamage = 0d;
+      
 
       // calculate total damage by summing all the damage components
       foreach (var damageDistribution in weaponCache.DamageDistributions)
@@ -112,6 +113,13 @@
             damageDistribution,
             defenseFraction);
       }
+
+
+      if (weaponCache.Character?.ProtoGameObject is ProtoCharacterMobEnraged && targetObject is IStaticWorldObject worldObj)
+      {
+        totalDamage *= 10;
+      }
+
 
       // multiply on final multiplier (usually used for expanding projectiles)
       totalDamage *= weaponCache.FinalDamageMultiplier;

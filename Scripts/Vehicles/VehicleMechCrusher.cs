@@ -40,6 +40,8 @@
 
     public override double VehicleWorldHeight => 2.6;
 
+    public override bool IsBuildableInPveZone => false;
+
     protected override void PrepareDefense(DefenseDescription defense)
     {
       defense.Set(

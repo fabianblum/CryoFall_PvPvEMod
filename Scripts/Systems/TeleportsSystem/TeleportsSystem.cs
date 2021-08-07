@@ -112,7 +112,6 @@
             }
 
             var teleportPosition = objectTeleport.TilePosition;
-            Logger.Warning("[PvE] TP: " + teleportPosition);
             if (!serverPlayerDiscoveredTeleports.TryGetValue(character,
                                                              out var characterDiscoveredTeleports))
             {
@@ -126,7 +125,6 @@
                 return;
             }
 
-            Logger.Info("Teleport discovered: " + objectTeleport, character);
             Instance.CallClient(character,
                                 _ => _.ClientRemote_DiscoveredTeleport(teleportPosition, protoObjectTeleport));
 
@@ -161,7 +159,6 @@
                 }
             }
 
-            Logger.Important("All teleports discovered", character);
             Instance.ServerSyncDiscoveredTeleportList(character);
         }
 
@@ -392,7 +389,6 @@
             }
 
             Server.World.SetPosition(character, targetTeleportPosition);
-            Logger.Important("Character teleported to " + targetTeleportPosition, character);
 
             return true;
         }
@@ -450,7 +446,6 @@
             ProtoObjectTeleport protoObjectTeleport)
         {
             ClientDiscoveredTeleports.Add(teleportPosition);
-            Logger.Important("Discovered a teleport: " + teleportPosition);
 
             NotificationSystem.ClientShowNotification(
                 title: protoObjectTeleport.Name,

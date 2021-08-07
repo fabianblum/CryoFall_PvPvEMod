@@ -1203,7 +1203,6 @@
         {
             if (PveSystem.ServerIsPvE || PveZone.IsPveZone(byCharacter))
             {
-                Logger.Warning("[PvE] 8");
                 // no land claim raids on PvE
                 return;
             }

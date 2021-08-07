@@ -79,6 +79,7 @@ namespace AtomicTorch.CBND.CoreMod.Characters
       //Find another path
       Vector2F v = (originalDirectionToEnemyHitbox * 2).RotateDeg(deg);
 
+            
       if (!HasObstaclesInTheWay(characterNpc, enemyCharacter, characterNpcPosition, enemyCharacter.Position, sendDebugEvents: false))
         return true;
 
@@ -135,8 +136,8 @@ namespace AtomicTorch.CBND.CoreMod.Characters
     private bool HasObstaclesInTheWay(ICharacter characterNpc, ICharacter enemyCharacter, Vector2D fromPosition, Vector2D toPosition, bool sendDebugEvents)
     {
       var tempLineTestResults = characterNpc.PhysicsBody.PhysicsSpace.TestLine(fromPosition, toPosition, CollisionGroups.Default, sendDebugEvents);
+            
       var tempLineTestResultsUp = characterNpc.PhysicsBody.PhysicsSpace.TestLine(fromPosition + (0, npcWeaponOffset), toPosition + (0, enemyWeaponOffset), CollisionGroups.Default, sendDebugEvents);
-
       tempLineTestResults.AddRange(tempLineTestResultsUp.AsList());
 
       foreach (var testResult in tempLineTestResults.AsList())
@@ -146,7 +147,7 @@ namespace AtomicTorch.CBND.CoreMod.Characters
           continue;
         if (ReferenceEquals(worldObject, enemyCharacter))
           continue;
-        if (worldObject.ProtoGameObject is IProtoCharacter)
+        if (worldObject is not null && worldObject.ProtoGameObject is IProtoCharacter)
           continue;
         if (worldObject is not null)
           return true;

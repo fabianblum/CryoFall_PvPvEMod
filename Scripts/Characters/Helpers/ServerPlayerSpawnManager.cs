@@ -2,7 +2,13 @@
 {
     using System;
     using AtomicTorch.CBND.CoreMod.Characters.Player;
+    using AtomicTorch.CBND.CoreMod.Items.Ammo;
+    using AtomicTorch.CBND.CoreMod.Items.Generic;
+    using AtomicTorch.CBND.CoreMod.Items.Tools.Axes;
     using AtomicTorch.CBND.CoreMod.Items.Tools.Lights;
+    using AtomicTorch.CBND.CoreMod.Items.Tools.Pickaxes;
+    using AtomicTorch.CBND.CoreMod.Items.Weapons.Melee;
+    using AtomicTorch.CBND.CoreMod.Items.Weapons.Ranged;
     using AtomicTorch.CBND.CoreMod.Systems.CharacterCreation;
     using AtomicTorch.CBND.CoreMod.Systems.CharacterDeath;
     using AtomicTorch.CBND.CoreMod.Systems.LandClaim;
@@ -40,10 +46,10 @@
             var random = Api.Random;
             Vector2Ushort? spawnPosition = null;
 
-            var spawnZone = ZonePlayerSpawn.Instance.ServerZoneInstance;
-            if (isRespawn)
+            var spawnZone = Api.GetProtoEntity<ZoneSpecialPlayerSpawn>().ServerZoneInstance;
+            if (!isRespawn)
             {
-                spawnZone = protoSpawnZone.ServerZoneInstance;
+                spawnZone = ZonePlayerSpawn.Instance.ServerZoneInstance;
             }
             
            //var spawnZone = protoSpawnZone.ServerZoneInstance;
@@ -97,6 +103,31 @@
             }
         }
 
+        public static void ServerAddInitItems(ICharacter character)
+        {
+            if (!character.IsInitialized)
+            {
+                return;
+            }
+
+            // spawn torch item for players convenience
+            // (yeah, it's possible to farm torches this way, but they are cheap so no good reason for farming them)
+            var hotbar = character.SharedGetPlayerContainerHotbar();
+            var inventory = character.SharedGetPlayerContainerInventory();
+
+            if (hotbar?.OccupiedSlotsCount == 0
+               && inventory?.OccupiedSlotsCount == 0)
+            {
+                Api.Server.Items.CreateItem<ItemAxeStone>(hotbar, slotId: 0);
+                Api.Server.Items.CreateItem<ItemPickaxeStone>(hotbar, slotId: 1);
+                Api.Server.Items.CreateItem<ItemCrossbow>(hotbar, slotId: 3);
+                Api.Server.Items.CreateItem<ItemAmmoArrowStone>(inventory, slotId: 0, count: 10);
+                Api.Server.Items.CreateItem<ItemPragmiumHeart>(inventory, slotId: 1, count: 1);
+                Api.Server.Items.CreateItem<ItemKnifeStone>(hotbar, slotId: 2);
+            }
+
+        }
+
         public static void Setup(IServerConfiguration serverConfiguration)
         {
             worldService = Api.Server.World;
@@ -107,7 +138,12 @@
 
         public static void SpawnPlayer(ICharacter character, bool isRespawn)
         {
-            ServerAddTorchItemIfNoItems(character);
+            
+
+            if(!isRespawn)
+            {
+                ServerAddInitItems(character);
+            }
 
             if (character.IsInitialized
                 && CharacterCreationSystem.SharedIsCharacterCreated(character))
