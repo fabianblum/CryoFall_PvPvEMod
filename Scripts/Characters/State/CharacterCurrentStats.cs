@@ -85,7 +85,7 @@
 
            
 
-            if (PvEZone.IsPveZone(damagedCharacter) && !damagedCharacter.IsNpc)
+            if (PvEZone.IsPvEZone(damagedCharacter) && !damagedCharacter.IsNpc)
             {
                 // the position is inside the PvE zone
                 return;
