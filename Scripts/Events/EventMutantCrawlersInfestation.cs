@@ -40,7 +40,7 @@
 
         public SpawnConfig SpawnScriptConfig { get; private set; }
 
-        protected override double DelayHoursSinceWipe => 0 * EventConstants.ServerEventDelayMultiplier;
+        protected override double DelayHoursSinceWipe => 1 * EventConstants.ServerEventDelayMultiplier;
 
         public override bool ServerIsTriggerAllowed(ProtoTrigger trigger)
         {

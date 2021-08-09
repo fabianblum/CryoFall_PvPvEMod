@@ -76,11 +76,12 @@
             compatibleAmmoProtos = null;
 
             var damageDistribution = new DamageDistribution()
-                                     .Set(DamageType.Kinetic, 1);
+                                     .Set(DamageType.Kinetic, 0.7)
+                                     .Set(DamageType.Chemical, 0.3);
 
             overrideDamageDescription = new DamageDescription(
                 damageValue: 5,
-                armorPiercingCoef: 0.6,
+                armorPiercingCoef: 0.2,
                 finalDamageMultiplier: 1.25,
                 rangeMax: 3,
                 damageDistribution: damageDistribution);
@@ -88,12 +89,7 @@
 
         protected override void ServerOnSpecialEffect(ICharacter damagedCharacter, double damage)
         {
-            if (RandomHelper.RollWithProbability(0.05))
-            {
-                damagedCharacter.ServerAddStatusEffect<StatusEffectBleeding>(intensity: 0.1);
-            }
-
-            if (RandomHelper.RollWithProbability(0.5))
+            if (RandomHelper.RollWithProbability(0.7))
             {
 				damagedCharacter.ServerAddStatusEffect<StatusEffectToxins>(intensity: 0.2);
             }

@@ -101,7 +101,7 @@
             // compensate for the general server items drop rate
             // but apply a separate rate
             return PvEZoneMultiplier.getLootCountMultiplier(mineralObject, this.serverRateLootCountMultiplier, this.serverRateLootCountMultiplierPvE)
-                   / DropItemsList.DropListItemsCountMultiplier;
+                    / PvEZoneMultiplier.getDropListItemCountMultiplier(mineralObject);
         }
 
         protected override void ServerInitialize(ServerInitializeData data)

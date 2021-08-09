@@ -54,16 +54,21 @@
 
             // primary loot
             lootDroplist
-                .Add<ItemToxin>(count: 1, countRandom: 1)
+                .Add<ItemToxin>(count: 1)
                 .Add(nestedList: new DropItemsList(outputs: 1)
-                                 .Add<ItemKeiniteRaw>(count: 1)
-			// requires device
-                .Add<ItemKeiniteRaw>(count: 3, condition: ItemKeiniteCollector.ConditionHasDeviceEquipped));
+                                 .Add<ItemInsectMeatRaw>(count: 1)
+                                 .Add<ItemBones>(count: 1)
+                                 .Add<ItemSlime>(count: 1)
+                // requires device
+                .Add<ItemKeiniteRaw>(count: 1, countRandom: 1, condition: ItemKeiniteCollector.ConditionHasDeviceEquipped));
 
             // extra loot
             lootDroplist.Add(condition: SkillHunting.ServerRollExtraLoot,
                              nestedList: new DropItemsList(outputs: 1)
-                                         .Add<ItemKeiniteRaw>(count: 1, countRandom: 1));
+                                         .Add<ItemInsectMeatRaw>(count: 1)
+                                         .Add<ItemToxin>(count: 1)
+                                         .Add<ItemBones>(count: 1)
+                                         .Add<ItemSlime>(count: 2));
         }
 
         protected override void ServerInitializeCharacterMob(ServerInitializeData data)
