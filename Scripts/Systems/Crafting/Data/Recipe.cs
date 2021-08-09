@@ -17,7 +17,7 @@
     using AtomicTorch.CBND.GameApi.Scripting;
     using AtomicTorch.GameEngine.Common.Extensions;
     using JetBrains.Annotations;
-    using AtomicTorch.CBND.CoreMod.Systems.PveZone;
+    using AtomicTorch.CBND.CoreMod.Systems.PvEZone;
 
     /// <summary>
     /// Please use specific recipes abstract types. You cannot create instances of this type yourself.
@@ -199,8 +199,8 @@
             {
                 result = this.OriginalDuration
                          / (IsServer
-                                ? PveZoneDamage.getServerCraftingSpeedMultiplier(character)
-                                : PveZoneDamage.getClientCraftingSpeedMultiplier(character));
+                                ? PvEZoneDamage.getServerCraftingSpeedMultiplier(character)
+                                : PvEZoneDamage.getClientCraftingSpeedMultiplier(character));
             }
 
             // hand or station crafting - apply crafting speed bonus

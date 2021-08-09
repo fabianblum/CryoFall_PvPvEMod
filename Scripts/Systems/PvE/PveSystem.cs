@@ -18,7 +18,7 @@
     using AtomicTorch.CBND.CoreMod.Systems.WorldObjectOwners;
     using AtomicTorch.CBND.CoreMod.UI;
     using AtomicTorch.CBND.CoreMod.Vehicles;
-    using AtomicTorch.CBND.CoreMod.Systems.PveZone;
+    using AtomicTorch.CBND.CoreMod.Systems.PvEZone;
     using AtomicTorch.CBND.GameApi;
     using AtomicTorch.CBND.GameApi.Data.Characters;
     using AtomicTorch.CBND.GameApi.Data.State;
@@ -252,7 +252,7 @@
             IDynamicWorldObject targetObject,
             bool showClientNotification)
         {
-            if (!SharedIsPve(clientLogErrorIfDataIsNotYetAvailable: false) && !PveZone.IsPveZone(weaponCache.Character))
+            if (!SharedIsPve(clientLogErrorIfDataIsNotYetAvailable: false) && !PvEZone.IsPvEZone(weaponCache.Character))
             {
                 return true;
             }
@@ -335,7 +335,7 @@
             IStaticWorldObject worldObject,
             bool writeToLog)
         {
-            if (!SharedIsPve(clientLogErrorIfDataIsNotYetAvailable: true) && !PveZone.IsPveZone(character))
+            if (!SharedIsPve(clientLogErrorIfDataIsNotYetAvailable: true) && !PvEZone.IsPvEZone(character))
             {
                 return true;
             }

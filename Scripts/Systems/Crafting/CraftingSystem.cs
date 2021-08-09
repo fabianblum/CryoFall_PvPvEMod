@@ -15,7 +15,7 @@ namespace AtomicTorch.CBND.CoreMod.Systems.Crafting
     using AtomicTorch.CBND.GameApi.Scripting.Network;
     using AtomicTorch.GameEngine.Common.Extensions;
     using AtomicTorch.GameEngine.Common.Helpers;
-    using AtomicTorch.CBND.CoreMod.Systems.PveZone;
+    using AtomicTorch.CBND.CoreMod.Systems.PvEZone;
 
     /// <summary>
     /// Character item crafting system - processes client requests to manipulate crafting queue.
@@ -341,7 +341,7 @@ namespace AtomicTorch.CBND.CoreMod.Systems.Crafting
 
                     var rate = 1.0;
 
-                    /*if (PveZone.IsPveZone(Api.Client.Characters.CurrentPlayerCharacter))
+                    /*if (PvEZone.IsPvEZone(Api.Client.Characters.CurrentPlayerCharacter))
                     {
                         rate = await Instance.CallServer(
                                        _ => _.ServerRemote_RequestLearningPointsGainMultiplierRatePve());

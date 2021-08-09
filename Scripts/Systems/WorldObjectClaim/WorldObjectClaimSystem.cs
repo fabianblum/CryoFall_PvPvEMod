@@ -10,7 +10,7 @@
     using AtomicTorch.CBND.GameApi.Data.Logic;
     using AtomicTorch.CBND.GameApi.Data.World;
     using AtomicTorch.CBND.GameApi.Resources;
-    using AtomicTorch.CBND.CoreMod.Systems.PveZone;
+    using AtomicTorch.CBND.CoreMod.Systems.PvEZone;
 
     /// <summary>
     /// This is a PvE-only system to claim (or tag/reserve) world objects.
@@ -127,7 +127,7 @@
             }
 
             
-            if (character is null || (!PveSystem.SharedIsPve(clientLogErrorIfDataIsNotYetAvailable: false) && !PveZone.IsPveZone(character)))
+            if (character is null || (!PveSystem.SharedIsPve(clientLogErrorIfDataIsNotYetAvailable: false) && !PvEZone.IsPvEZone(character)))
             {
                 return true;
             }

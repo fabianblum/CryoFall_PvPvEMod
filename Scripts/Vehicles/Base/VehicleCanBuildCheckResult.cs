@@ -26,6 +26,6 @@
         BaseUnderRaidblock = 6,
 
         [Description("Can not built in PVE Zone.")]
-        NotInPveZone = 7
+        NotInPvEZone = 7
     }
 }

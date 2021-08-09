@@ -15,7 +15,7 @@
     using AtomicTorch.CBND.CoreMod.Systems.Notifications;
     using AtomicTorch.CBND.CoreMod.Systems.Physics;
     using AtomicTorch.CBND.CoreMod.Systems.PvE;
-    using AtomicTorch.CBND.CoreMod.Systems.PveZone;
+    using AtomicTorch.CBND.CoreMod.Systems.PvEZone;
     using AtomicTorch.CBND.CoreMod.Systems.Weapons;
     using AtomicTorch.CBND.CoreMod.Systems.WorldObjectClaim;
     using AtomicTorch.CBND.GameApi.Data.State;
@@ -231,7 +231,7 @@
 
                 return protoItemToolMining.ServerGetDamageToMineral(targetObject)
                        * damageMultiplier
-                       * PveZoneDamage.getMiningDamageMultiplier(targetObject);
+                       * PvEZoneDamage.getMiningDamageMultiplier(targetObject);
             }
 
             if (weaponCache.ProtoWeapon is ItemNoWeapon)

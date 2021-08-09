@@ -46,7 +46,7 @@
     using AtomicTorch.GameEngine.Common.Extensions;
     using AtomicTorch.GameEngine.Common.Helpers;
     using AtomicTorch.GameEngine.Common.Primitives;
-    using AtomicTorch.CBND.CoreMod.Systems.PveZone;
+    using AtomicTorch.CBND.CoreMod.Systems.PvEZone;
     using JetBrains.Annotations;
 
     public partial class LandClaimSystem : ProtoSystem<LandClaimSystem>
@@ -203,7 +203,7 @@
                                  return true;
                              }
 
-                             if (!PveSystem.SharedIsPve(false) && !PveZone.IsPveZone(forCharacter))
+                             if (!PveSystem.SharedIsPve(false) && !PvEZone.IsPvEZone(forCharacter))
                              {
                                  // in PvP only check whether the land is not claimed by another player
                                  return ValidatorIsOwnedOrFreeLand.CheckFunction.Invoke(context);
@@ -657,7 +657,7 @@
                               return true;
                           }
 
-                          if (PveSystem.SharedIsPve(clientLogErrorIfDataIsNotYetAvailable: false) || PveZone.IsPveZone(forCharacter))
+                          if (PveSystem.SharedIsPve(clientLogErrorIfDataIsNotYetAvailable: false) || PvEZone.IsPvEZone(forCharacter))
                           {
                               return true;
                           }
@@ -744,7 +744,7 @@
                           return true;
                       }
 
-                      if (PveSystem.SharedIsPve(clientLogErrorIfDataIsNotYetAvailable: false) || PveZone.IsPveZone(forCharacter))
+                      if (PveSystem.SharedIsPve(clientLogErrorIfDataIsNotYetAvailable: false) || PvEZone.IsPvEZone(forCharacter))
                       {
                           return true;
                       }
@@ -1201,7 +1201,7 @@
             bool forceEvenIfNoCharacter = false,
             double durationMultiplier = 1.0)
         {
-            if (PveSystem.ServerIsPvE || PveZone.IsPveZone(byCharacter))
+            if (PveSystem.ServerIsPvE || PvEZone.IsPvEZone(byCharacter))
             {
                 // no land claim raids on PvE
                 return;

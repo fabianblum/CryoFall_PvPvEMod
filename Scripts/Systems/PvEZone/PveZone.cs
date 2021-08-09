@@ -1,4 +1,4 @@
-﻿namespace AtomicTorch.CBND.CoreMod.Systems.PveZone
+﻿namespace AtomicTorch.CBND.CoreMod.Systems.PvEZone
 {
     using System;
     using System.Collections.Generic;
@@ -22,42 +22,36 @@
     using AtomicTorch.CBND.CoreMod.Systems;
     using AtomicTorch.GameEngine.Common.Primitives;
 
-    public class PveZone : ProtoSystem<PveZone>
+    public class PvEZone : ProtoSystem<PvEZone>
     {
         public override string Name => "PvE Zone system";
 
-        public static readonly bool PveZoneEnabled;
+        public static readonly bool PvEZoneEnabled;
 
-        static PveZone()
+        static PvEZone()
         {
-            PveZoneEnabled = ServerRates.Get(
+            PvEZoneEnabled = ServerRates.Get(
                 "PvEZone",
                 defaultValue: 0,
                 @"Defines if the PvE Zone is enabled (1) or disabled (0).")
-                != 1;
+                == 1;
         }
-        public static bool IsPveZone(ICharacter character)
+        public static bool IsPvEZone(ICharacter character)
         {
-            if(!PveZoneEnabled)
+            if(!PvEZoneEnabled)
             {
                 return false;
             }
 
-            if (character.Position.ToVector2Ushort().Y < 9879)
-            {
-                return true;
-            }
 
-            return false;
-
-            //var pveArea = ZonePvE.Instance.ServerZoneInstance;
-            //return pveArea.IsContainsPosition(character.Position.ToVector2Ushort());
+            var pveArea = ZonePvE.Instance.ServerZoneInstance;
+            return pveArea.IsContainsPosition(character.Position.ToVector2Ushort());
         }
 
-        public static bool IsPveZone(Vector2Ushort position)
+        public static bool IsPvEZone(Vector2Ushort position)
         {
             
-            if (!PveZoneEnabled)
+            if (!PvEZoneEnabled)
             {
                 return false;
             }
@@ -74,22 +68,15 @@
             //return pveArea.IsContainsPosition(position);
         }
 
-        public static bool IsPveZone(IStaticWorldObject worldObj)
+        public static bool IsPvEZone(IStaticWorldObject worldObj)
         {
-            if (!PveZoneEnabled)
+            if (!PvEZoneEnabled)
             {
                 return false;
             }
 
-            if (WorldMapResourceMarksSystem.SharedGetObjectCenterPosition(worldObj).Y < 9879)
-            {
-                return true;
-            }
-
-            return false;
-
-            //var pveArea = ZonePvE.Instance.ServerZoneInstance;
-            //return pveArea.IsContainsPosition(WorldMapResourceMarksSystem.SharedGetObjectCenterPosition(worldObj));
+            var pveArea = ZonePvE.Instance.ServerZoneInstance;
+            return pveArea.IsContainsPosition(WorldMapResourceMarksSystem.SharedGetObjectCenterPosition(worldObj));
         }
     }
 }

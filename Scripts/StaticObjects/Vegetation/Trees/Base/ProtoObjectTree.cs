@@ -8,7 +8,7 @@
     using AtomicTorch.CBND.CoreMod.Systems.Notifications;
     using AtomicTorch.CBND.CoreMod.Systems.Physics;
     using AtomicTorch.CBND.CoreMod.Systems.PvE;
-    using AtomicTorch.CBND.CoreMod.Systems.PveZone;
+    using AtomicTorch.CBND.CoreMod.Systems.PvEZone;
     using AtomicTorch.CBND.CoreMod.Systems.Weapons;
     using AtomicTorch.CBND.GameApi.Data.State;
     using AtomicTorch.CBND.GameApi.Data.World;
@@ -141,7 +141,7 @@
 
                 return protoItemToolWoodCutting.ServerGetDamageToTree(targetObject)
                        * damageMultiplier
-                       * PveZoneDamage.getTreeDamageMultiplier(targetObject)
+                       * PvEZoneDamage.getTreeDamageMultiplier(targetObject)
                        * this.SharedGetDamageMultiplierByGrowthProgress(targetObject);
             }
 

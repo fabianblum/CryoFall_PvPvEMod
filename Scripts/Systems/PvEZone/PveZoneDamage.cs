@@ -1,4 +1,4 @@
-﻿namespace AtomicTorch.CBND.CoreMod.Systems.PveZone
+﻿namespace AtomicTorch.CBND.CoreMod.Systems.PvEZone
 {
     using System;
     using System.Collections.Generic;
@@ -15,12 +15,12 @@
     using AtomicTorch.CBND.GameApi.Data.World;
     using AtomicTorch.CBND.CoreMod.Systems.Crafting;
 
-    public static class PveZoneDamage
+    public static class PvEZoneDamage
     {
 
         public static double getTreeDamageMultiplier(IStaticWorldObject worldObj)
         {
-            if(PveZone.IsPveZone(worldObj))
+            if(PvEZone.IsPvEZone(worldObj))
             {
                 return ToolsConstants.ActionWoodcuttingSpeedMultiplierPvE;
             }
@@ -30,7 +30,7 @@
 
         public static double getMiningDamageMultiplier(IStaticWorldObject worldObj)
         {
-            if (PveZone.IsPveZone(worldObj))
+            if (PvEZone.IsPvEZone(worldObj))
             {
                 return ToolsConstants.ActionMiningSpeedMultiplierPvE;
             }
@@ -40,7 +40,7 @@
 
         public static double getServerCraftingSpeedMultiplier(ICharacter character)
         {
-            if (PveZone.IsPveZone(character))
+            if (PvEZone.IsPvEZone(character))
             {
                 return CraftingSystem.ServerCraftingSpeedMultiplierPve;
             }
@@ -50,7 +50,7 @@
 
         public static double getClientCraftingSpeedMultiplier(ICharacter character)
         {
-            if (PveZone.IsPveZone(character))
+            if (PvEZone.IsPvEZone(character))
             {
                 return CraftingSystem.ClientCraftingSpeedMultiplierPve;
             }

@@ -7,7 +7,7 @@
     using AtomicTorch.CBND.CoreMod.Systems.CharacterDeath;
     using AtomicTorch.CBND.CoreMod.Systems.CharacterInvincibility;
     using AtomicTorch.CBND.CoreMod.Systems.Notifications;
-    using AtomicTorch.CBND.CoreMod.Systems.PveZone;
+    using AtomicTorch.CBND.CoreMod.Systems.PvEZone;
     using AtomicTorch.CBND.CoreMod.Zones;
     using AtomicTorch.CBND.GameApi.Data;
     using AtomicTorch.CBND.GameApi.Data.Characters;
@@ -85,7 +85,7 @@
 
            
 
-            if (PveZone.IsPveZone(damagedCharacter) && !damagedCharacter.IsNpc)
+            if (PvEZone.IsPveZone(damagedCharacter) && !damagedCharacter.IsNpc)
             {
                 // the position is inside the PvE zone
                 return;

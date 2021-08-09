@@ -52,7 +52,7 @@
     using AtomicTorch.CBND.GameApi.ServicesClient.Components;
     using AtomicTorch.GameEngine.Common.Extensions;
     using AtomicTorch.GameEngine.Common.Primitives;
-    using AtomicTorch.CBND.CoreMod.Systems.PveZone;
+    using AtomicTorch.CBND.CoreMod.Systems.PvEZone;
 
     public abstract class ProtoVehicle
         <TVehiclePrivateState,
@@ -137,7 +137,7 @@
 
         public bool IsClosedAccessModeAvailable => false;
 
-        public virtual bool IsBuildableInPveZone => true;
+        public virtual bool IsBuildableInPvEZone => true;
 
         public bool IsEveryoneAccessModeAvailable => false;
 
@@ -829,9 +829,9 @@
                 return VehicleCanBuildCheckResult.NotInteractingWithVehicleBay;
             }
 
-            if (!IsBuildableInPveZone && PveZone.IsPveZone(character.Position.ToVector2Ushort()))
+            if (!IsBuildableInPvEZone && PvEZone.IsPvEZone(character.Position.ToVector2Ushort()))
             {
-                return VehicleCanBuildCheckResult.NotInPveZone;
+                return VehicleCanBuildCheckResult.NotInPvEZone;
             }
             
             if (IsServer
