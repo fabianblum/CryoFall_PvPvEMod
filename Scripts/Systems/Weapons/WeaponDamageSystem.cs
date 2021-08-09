@@ -56,6 +56,7 @@
                                                                         staticWorldObject,
                                                                         showClientNotification: false)))
         {
+                    
           return 0;
         }
 
