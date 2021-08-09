@@ -231,7 +231,7 @@
 
                 return protoItemToolMining.ServerGetDamageToMineral(targetObject)
                        * damageMultiplier
-                       * PvEZoneDamage.getMiningDamageMultiplier(targetObject);
+                       * PvEZoneMultiplier.getMiningDamageMultiplier(targetObject);
             }
 
             if (weaponCache.ProtoWeapon is ItemNoWeapon)

@@ -141,7 +141,7 @@
 
                 return protoItemToolWoodCutting.ServerGetDamageToTree(targetObject)
                        * damageMultiplier
-                       * PvEZoneDamage.getTreeDamageMultiplier(targetObject)
+                       * PvEZoneMultiplier.getTreeDamageMultiplier(targetObject)
                        * this.SharedGetDamageMultiplierByGrowthProgress(targetObject);
             }
 

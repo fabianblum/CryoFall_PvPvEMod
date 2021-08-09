@@ -14,8 +14,9 @@
     using AtomicTorch.CBND.CoreMod.Items.Tools;
     using AtomicTorch.CBND.GameApi.Data.World;
     using AtomicTorch.CBND.CoreMod.Systems.Crafting;
+    using AtomicTorch.CBND.CoreMod.Technologies;
 
-    public static class PvEZoneDamage
+    public static class PvEZoneMultiplier
     {
 
         public static double getTreeDamageMultiplier(IStaticWorldObject worldObj)
@@ -56,6 +57,26 @@
             }
 
             return CraftingSystem.ClientCraftingSpeedMultiplier;
+        }
+
+        public static double getExperienceGainMultiplier(ICharacter character)
+        {
+            if (PvEZone.IsPvEZone(character))
+            {
+                return TechConstants.ServerSkillExperienceGainMultiplierPvE;
+            }
+
+            return TechConstants.ServerSkillExperienceGainMultiplier;
+        }
+
+        public static double getLearningPointsGainMultiplier(ICharacter character)
+        {
+            if (PvEZone.IsPvEZone(character))
+            {
+                return TechConstants.ServerLearningPointsGainMultiplierPvE;
+            }
+
+            return TechConstants.ServerLearningPointsGainMultiplier;
         }
     }
 }

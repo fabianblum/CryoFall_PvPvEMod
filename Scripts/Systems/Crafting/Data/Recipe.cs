@@ -199,8 +199,8 @@
             {
                 result = this.OriginalDuration
                          / (IsServer
-                                ? PvEZoneDamage.getServerCraftingSpeedMultiplier(character)
-                                : PvEZoneDamage.getClientCraftingSpeedMultiplier(character));
+                                ? PvEZoneMultiplier.getServerCraftingSpeedMultiplier(character)
+                                : PvEZoneMultiplier.getClientCraftingSpeedMultiplier(character));
             }
 
             // hand or station crafting - apply crafting speed bonus
