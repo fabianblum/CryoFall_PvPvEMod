@@ -27,7 +27,9 @@
     using AtomicTorch.CBND.CoreMod.Systems.Crafting;
     using AtomicTorch.CBND.CoreMod.Systems.LandClaim;
     using AtomicTorch.CBND.CoreMod.Systems.NewbieProtection;
+    using AtomicTorch.CBND.CoreMod.Systems.Notifications;
     using AtomicTorch.CBND.CoreMod.Systems.Physics;
+    using AtomicTorch.CBND.CoreMod.Systems.PvEZone;
     using AtomicTorch.CBND.CoreMod.Systems.Skills;
     using AtomicTorch.CBND.CoreMod.Systems.Technologies;
     using AtomicTorch.CBND.CoreMod.Systems.TeleportsSystem;
@@ -312,6 +314,23 @@
                 },
                 clientState);
 
+            publicState.ClientSubscribe(
+                _ => _.IsInPvEZone,
+                _ =>
+                {
+                    if (publicState.IsInPvEZone)
+                    {
+                        // Entering PvE Zone
+                        NotificationSystem.ClientShowNotification(title: "You enter the PvE zone. So any damage against players is impossible").HideAfterDelay(delaySeconds: 10 * 60);
+                    }
+                    else
+                    {
+                        // Leaving PvE Zone
+                        NotificationSystem.ClientShowNotification(title: "You leave the PvE zone. PvP is now activated. take care").HideAfterDelay(delaySeconds: 10 * 60);
+                    }
+                },
+                clientState);
+
             RefreshCurrentSelectedItem();
 
             // ReSharper disable all AccessToModifiedClosure
@@ -554,6 +573,10 @@
             var privateState = data.PrivateState;
 
             publicState.IsOnline = character.ServerIsOnline;
+
+
+            bool IsInPvEZone = PvEZone.IsPvEZone(character);
+            publicState.IsInPvEZone = IsInPvEZone;
 
             // update selected hotbar item
             SharedRefreshSelectedHotbarItem(character, privateState);

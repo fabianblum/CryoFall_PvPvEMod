@@ -32,6 +32,10 @@
 
     [SyncToClient]
     [TempOnly]
+    public bool IsInPvEZone { get; set; }
+
+    [SyncToClient]
+    [TempOnly]
     public Vector2D Destination { get; set; }
 
     [SyncToClient]
