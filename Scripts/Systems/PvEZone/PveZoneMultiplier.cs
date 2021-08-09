@@ -15,6 +15,8 @@
     using AtomicTorch.CBND.GameApi.Data.World;
     using AtomicTorch.CBND.CoreMod.Systems.Crafting;
     using AtomicTorch.CBND.CoreMod.Technologies;
+    using AtomicTorch.CBND.CoreMod.Systems.Droplists;
+    using AtomicTorch.CBND.CoreMod.StaticObjects.Misc.Events;
 
     public static class PvEZoneMultiplier
     {
@@ -77,6 +79,36 @@
             }
 
             return TechConstants.ServerLearningPointsGainMultiplier;
+        }
+
+        public static double getDropListItemCountMultiplier(ICharacter character)
+        {
+            if (PvEZone.IsPvEZone(character))
+            {
+                return DropItemsList.DropListItemsCountMultiplierPvE;
+            }
+
+            return DropItemsList.DropListItemsCountMultiplier;
+        }
+
+        public static double getDropListItemCountMultiplier(IStaticWorldObject worldObj)
+        {
+            if (PvEZone.IsPvEZone(worldObj))
+            {
+                return DropItemsList.DropListItemsCountMultiplierPvE;
+            }
+
+            return DropItemsList.DropListItemsCountMultiplier;
+        }
+
+        public static double getLootCountMultiplier(IStaticWorldObject worldObj, double defaultMultiplier, double pvEMultiplier)
+        {
+            if (PvEZone.IsPvEZone(worldObj))
+            {
+                return pvEMultiplier;
+            }
+
+            return defaultMultiplier;
         }
     }
 }

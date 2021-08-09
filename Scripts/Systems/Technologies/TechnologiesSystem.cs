@@ -2,7 +2,6 @@
 {
     using AtomicTorch.CBND.CoreMod.Characters.Player;
     using AtomicTorch.CBND.CoreMod.Systems.Notifications;
-    using AtomicTorch.CBND.CoreMod.Systems.PvEZone;
     using AtomicTorch.CBND.CoreMod.Technologies;
     using AtomicTorch.CBND.GameApi.Data.Characters;
     using AtomicTorch.CBND.GameApi.Data.State;
@@ -150,7 +149,7 @@
             double TimeGameTier5Basic,
             double TimeGameTier5Specialized) ServerRemote_RequestTechRates()
         {
-            return (PvEZoneMultiplier.getLearningPointsGainMultiplier(ServerRemoteContext.Character),
+            return (TechConstants.ServerLearningPointsGainMultiplier,
                     TechConstants.PvpTechTimeGameTier3Basic,
                     TechConstants.PvpTechTimeGameTier3Specialized,
                     TechConstants.PvpTechTimeGameTier4Basic,

@@ -27,6 +27,7 @@
     using AtomicTorch.GameEngine.Common.Extensions;//
     using AtomicTorch.GameEngine.Common.Helpers;//
     using AtomicTorch.GameEngine.Common.Primitives;//
+    using AtomicTorch.CBND.CoreMod.Systems.PvEZone;
 
     public abstract class ProtoObjectMineralMeteorite
         : ProtoObjectMineral
@@ -37,6 +38,8 @@
     {
         private readonly double serverRateLootCountMultiplier;
 
+        private readonly double serverRateLootCountMultiplierPvE;
+
         protected ProtoObjectMineralMeteorite()
         {
             if (IsServer)
@@ -45,6 +48,11 @@
                     "DropListItemsCountMultiplier." + this.ShortId,
                     defaultValue: 1.0,
                     @"This rate determines the item droplist multiplier for loot in " + this.Name + ".");
+
+                this.serverRateLootCountMultiplierPvE = ServerRates.Get(
+                    "DropListItemsCountMultiplierPvE." + this.ShortId,
+                    defaultValue: 1.0,
+                    @"This rate determines the item droplist multiplier for loot in " + this.Name + ". For PvE Zone");
             }
         }
 		
@@ -92,7 +100,7 @@
         {
             // compensate for the general server items drop rate
             // but apply a separate rate
-            return this.serverRateLootCountMultiplier
+            return PvEZoneMultiplier.getLootCountMultiplier(mineralObject, this.serverRateLootCountMultiplier, this.serverRateLootCountMultiplierPvE)
                    / DropItemsList.DropListItemsCountMultiplier;
         }
 
