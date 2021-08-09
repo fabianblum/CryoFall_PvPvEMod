@@ -83,9 +83,8 @@
 
             var damagedCharacter = (ICharacter)this.GameObject;
 
-           
 
-            if (PvEZone.IsPvEZone(damagedCharacter) && !damagedCharacter.IsNpc)
+            if (PvEZone.IsPvEZone(damagedCharacter) && !damagedCharacter.IsNpc && damageSource is ICharacter byPlayerCharacter && !byPlayerCharacter.IsNpc)
             {
                 // the position is inside the PvE zone
                 return;
