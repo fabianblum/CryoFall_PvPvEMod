@@ -96,8 +96,8 @@
                 .Add(GetTrigger<TriggerTimeInterval>()
                          .Configure(
                                  this.ServerGetIntervalForThisEvent(defaultInterval:
-                                                                    (from: TimeSpan.FromHours(1),
-                                                                     to: TimeSpan.FromHours(2)))
+                                                                    (from: TimeSpan.FromHours(3),
+                                                                     to: TimeSpan.FromHours(5)))
                              ));
 
             this.SpawnScriptConfig = Api.GetProtoEntity<SpawnEventMutantCrawlersInfestation>()

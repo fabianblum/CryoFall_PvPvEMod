@@ -11,53 +11,53 @@
     using AtomicTorch.CBND.CoreMod.SoundPresets;
     using AtomicTorch.GameEngine.Common.Helpers;
 
-    public class ItemWeaponMobMutantCrawlerPoison : ProtoItemMobWeaponRanged
+  public class ItemWeaponMobMutantCrawlerPoison : ProtoItemMobWeaponRanged
+  {
+    public override ushort AmmoCapacity => 0;
+
+    public override double AmmoReloadDuration => 2.0; // lower
+
+    public override double CharacterAnimationAimingRecoilDuration => 0.4;
+
+    public override double CharacterAnimationAimingRecoilPower => 0.667;
+
+    public override double DamageApplyDelay => 0.2;
+
+    public override double DamageMultiplier => 1.0;
+
+    public override double FireAnimationDuration => 0.3;
+
+    public override uint DurabilityMax => 0;
+
+    public override bool IsLoopedAttackAnimation => false;
+
+    public override double FireInterval => 1.75;
+
+    public override double SpecialEffectProbability => 0.3;
+
+    //public override string Name => "Handgun";
+
+    public override double ReadyDelayDuration => WeaponReadyDelays.ConventionalPistols;
+
+    public override string CharacterAnimationAimingName => null;
+
+    public override string CharacterAnimationAimingRecoilName => null;
+
+    public override void SharedOnHit(
+        WeaponFinalCache weaponCache,
+        IWorldObject damagedObject,
+        double damage,
+        WeaponHitData hitData,
+        out bool isDamageStop)
     {
-        public override ushort AmmoCapacity => 0;
 
-        public override double AmmoReloadDuration => 2.0; // lower
-
-        public override double CharacterAnimationAimingRecoilDuration => 0.4;
-
-        public override double CharacterAnimationAimingRecoilPower => 0.667;
-
-        public override double DamageApplyDelay => 0.2;
-
-        public override double DamageMultiplier => 1.0;
-
-        public override double FireAnimationDuration => 0.3;
-		
-		public override uint DurabilityMax => 0;
-
-        public override bool IsLoopedAttackAnimation => false;
-
-        public override double FireInterval => 1.75;
-		
-		public override double SpecialEffectProbability => 0.3;
-
-        //public override string Name => "Handgun";
-
-        public override double ReadyDelayDuration => WeaponReadyDelays.ConventionalPistols;
-
-        public override string CharacterAnimationAimingName => null;
-
-        public override string CharacterAnimationAimingRecoilName => null;
-
-        public override void SharedOnHit(
-            WeaponFinalCache weaponCache,
-            IWorldObject damagedObject,
-            double damage,
-            WeaponHitData hitData,
-            out bool isDamageStop)
-        {
-			
-			base.SharedOnHit(weaponCache,
+      base.SharedOnHit(weaponCache,
                              damagedObject,
                              damage,
                              hitData,
                              out isDamageStop);
         }
-		
+
         public override double SharedUpdateAndGetFirePatternCurrentSpreadAngleDeg(WeaponState state)
         {
             // angle variation within x degrees
