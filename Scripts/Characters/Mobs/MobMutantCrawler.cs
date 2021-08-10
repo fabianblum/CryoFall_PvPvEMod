@@ -10,6 +10,7 @@
     using AtomicTorch.CBND.CoreMod.Systems.Droplists;
     using AtomicTorch.CBND.GameApi.Data.World;
     using AtomicTorch.CBND.CoreMod.Items.Devices;
+    using AtomicTorch.CBND.CoreMod.Systems.ServerTimers;
 
     public class MobMutantCrawler : ProtoCharacterMob
     {
@@ -78,6 +79,12 @@
             var weaponProto = GetProtoEntity<ItemWeaponMobMutantCrawlerPoison>();
             data.PrivateState.WeaponState.SharedSetWeaponProtoOnly(weaponProto);
             data.PublicState.SharedSetCurrentWeaponProtoOnly(weaponProto);
+
+            // schedule destruction by timer
+            var gameObject = data.GameObject;
+            ServerTimersSystem.AddAction(
+                delaySeconds: 60 * 60, // 60 minutes
+                () => ServerDespawnTimerCallback(gameObject));
         }
 
         protected override void ServerUpdateMob(ServerUpdateData data)
@@ -97,21 +104,6 @@
                 rotationAngleRad: out var rotationAngleRad);
 
             this.ServerSetMobInput(character, movementDirection, rotationAngleRad);
-        }
-
-        protected override void ServerInitializeCharacterMob(ServerInitializeData data)
-        {
-            base.ServerInitializeCharacterMob(data);
-
-            var weaponProto = GetProtoEntity<ItemWeaponMobMutantCrawlerPoison>();
-            data.PrivateState.WeaponState.SharedSetWeaponProtoOnly(weaponProto);
-            data.PublicState.SharedSetCurrentWeaponProtoOnly(weaponProto);
-
-            // schedule destruction by timer
-            var gameObject = data.GameObject;
-            ServerTimersSystem.AddAction(
-                delaySeconds: 60 * 60, // 60 minutes
-                () => ServerDespawnTimerCallback(gameObject));
         }
 
         private static void ServerDespawnTimerCallback(IWorldObject gameObject)

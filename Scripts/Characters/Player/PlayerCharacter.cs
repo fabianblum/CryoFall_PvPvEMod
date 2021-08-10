@@ -484,14 +484,32 @@
         {
             foreach (var objectTeleport in TeleportsSystem.ServerAllTeleports)
             {
-                if (objectTeleport.TilePosition.X == 10566 && objectTeleport.TilePosition.Y == 10103 ||
+                if (
                     objectTeleport.TilePosition.X == 10673 && objectTeleport.TilePosition.Y == 9832 ||
                     objectTeleport.TilePosition.X == 10195 && objectTeleport.TilePosition.Y == 9837 ||
                     objectTeleport.TilePosition.X == 9924 && objectTeleport.TilePosition.Y == 9822) {
                     TeleportsSystem.ServerAddTeleportToDiscoveredList(player, objectTeleport);
                 }
                     
-            }            
+            }
+
+
+            bool foundTp = false;
+            while (!foundTp) {
+
+                Random rnd = new Random();
+                int index = rnd.Next(TeleportsSystem.ServerAllTeleports.Count);
+                var randomObjectTeleport = TeleportsSystem.ServerAllTeleports.ElementAt(index);
+
+                if (!(
+                        randomObjectTeleport.TilePosition.X == 10673 && randomObjectTeleport.TilePosition.Y == 9832 ||
+                        randomObjectTeleport.TilePosition.X == 10195 && randomObjectTeleport.TilePosition.Y == 9837 ||
+                        randomObjectTeleport.TilePosition.X == 9924 && randomObjectTeleport.TilePosition.Y == 9822))
+                {
+                    TeleportsSystem.ServerAddTeleportToDiscoveredList(player, randomObjectTeleport);
+                    foundTp = true;
+                }
+            }
         }
 
         protected override void ServerInitializeCharacterFirstTime(ServerInitializeData data)
