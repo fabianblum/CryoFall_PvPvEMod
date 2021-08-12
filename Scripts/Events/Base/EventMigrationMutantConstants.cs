@@ -54,7 +54,7 @@
 
       string[] mobCountSplit = mobCountString.Replace(" ", "").Split(',');
       if (mobCountSplit.Length != 5)
-        MigrationMutantMobCount = new int[] { 1, 4, 8, 13, 20 };
+        MigrationMutantMobCount = new int[] { 1, 4, 5, 13, 20 };
       else
         MigrationMutantMobCount = Array.ConvertAll(mobCountSplit, s => int.Parse(s));
 
