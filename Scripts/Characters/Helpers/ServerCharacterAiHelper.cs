@@ -372,7 +372,7 @@
               {
                 FindPathHelper.SetDistanceTo(characterNpc.Position, 0.0, toPosition, 0.0, out distanceToTarget, out directionToEnemyPosition, out directionToEnemyHitbox);
 
-                isTargetTooFar = false;
+                isTargetTooFar = distanceToOriginalTarget > distanceEnemyTooFar * 2;
                 targetCharacter = privateState.CurrentTargetCharacter;
                 movementDirection = directionToEnemyPosition;
                 break;

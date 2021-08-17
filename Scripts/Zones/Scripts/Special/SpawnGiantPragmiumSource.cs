@@ -13,7 +13,7 @@
           .Add(GetTrigger<TriggerTimeInterval>().ConfigureForSpawn(TimeSpan.FromHours(3)));
 
       spawnList.CreatePreset(interval: 10, padding: 10)
-               .Add<ObjectMineralGiantPragmiumSource>().SetCustomPaddingWithSelf(79);
+               .Add<ObjectMineralGiantPragmiumSource>().SetCustomPaddingWithSelf(30);
     }
   }
 }

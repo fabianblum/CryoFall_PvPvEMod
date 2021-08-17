@@ -56,6 +56,13 @@
       // primary loot
       lootDroplist
           .Add<ItemToxin>(count: 1)
+
+          .Add<ItemGoldNugget>(count: 5, countRandom: 20, probability: .1)
+          .Add<ItemOreIronConcentrate>(count: 5, countRandom: 20, probability: .1)
+          .Add<ItemOreCopperConcentrate>(count: 5, countRandom: 20, probability: .1)
+          .Add<ItemOreCopper>(count: 5, countRandom: 50, probability: .1)
+          .Add<ItemOreIron>(count: 5, countRandom: 50, probability: .1)
+
           .Add(nestedList: new DropItemsList(outputs: 1)
                            .Add<ItemInsectMeatRaw>(count: 1)
                            .Add<ItemBones>(count: 1)
