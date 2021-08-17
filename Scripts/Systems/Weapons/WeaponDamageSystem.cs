@@ -121,7 +121,7 @@
       {
         if (weaponCache.Character?.ProtoGameObject is MobEnragedPragmiumBear || weaponCache.Character?.ProtoGameObject is MobEnragedLargePragmiumBear)
         {
-            totalDamage *= 2;
+            totalDamage *= 1.5;
         }
         else
         {

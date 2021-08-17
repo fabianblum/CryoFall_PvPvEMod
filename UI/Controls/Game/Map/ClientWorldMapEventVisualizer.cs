@@ -77,6 +77,26 @@
             }
         }
 
+        private bool IsClientAllowedToSeeCircle(ILogicObject activeEvent)
+        {
+            var publicState = activeEvent.GetPublicState<EventWithAreaPublicState>();
+
+            if (publicState.BoundToPlayer == null || publicState.BoundToPlayer.Count == 0)
+            {
+                return true;
+            }
+
+            foreach (string boundPlayer in publicState.BoundToPlayer)
+            {
+                if (ClientCurrentCharacterHelper.Character.Name == boundPlayer)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         private void OnActiveEventAdded(ILogicObject activeEvent)
         {
             var timeRemains = ClientWorldEventRegularNotificationManager.CalculateEventTimeRemains(activeEvent);
@@ -89,23 +109,14 @@
             if (activeEvent.ProtoGameObject is IProtoEventWithArea)
             {
                 // add a circle for the search area
-                var publicState = activeEvent.GetPublicState<EventWithAreaPublicState>();
-                var circleRadius = publicState.AreaCircleRadius;
-                var circleCanvasPosition = this.WorldToCanvasPosition(publicState.AreaCirclePosition.ToVector2D());
+                
 
-
-                bool match = publicState.BoundToPlayer.Count == 0;
-                foreach (string boundPlayer in publicState.BoundToPlayer)
+                if (IsClientAllowedToSeeCircle(activeEvent))
                 {
-                    if(ClientCurrentCharacterHelper.Character.Name == boundPlayer)
-                    {
-                        match = true;
-                    }
-                }
+                    var publicState = activeEvent.GetPublicState<EventWithAreaPublicState>();
+                    var circleRadius = publicState.AreaCircleRadius;
+                    var circleCanvasPosition = this.WorldToCanvasPosition(publicState.AreaCirclePosition.ToVector2D());
 
-                if (match)
-                {
-                    Api.Logger.Important("[PvPvE] Print it" + ClientCurrentCharacterHelper.Character.Name);
                     var control = new WorldMapMarkEvent
                     {
                         Width = 2 * circleRadius * WorldMapSectorProvider.WorldTileTextureSize,

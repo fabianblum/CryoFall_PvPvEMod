@@ -28,7 +28,7 @@
 
     public override ObjectMaterial ObjectMaterial => ObjectMaterial.Glass;
 
-    public override double StatDefaultHealthMax => 1500;
+    public override double StatDefaultHealthMax => 1000;
 
     public override double StatMoveSpeed => 1.8;
 

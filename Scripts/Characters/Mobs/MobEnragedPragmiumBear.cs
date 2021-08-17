@@ -26,7 +26,7 @@
 
     public override ObjectMaterial ObjectMaterial => ObjectMaterial.SoftTissues;
 
-    public override double StatDefaultHealthMax => 1000;
+    public override double StatDefaultHealthMax => 750;
 
     public override double StatMoveSpeed => 1.8;
 
