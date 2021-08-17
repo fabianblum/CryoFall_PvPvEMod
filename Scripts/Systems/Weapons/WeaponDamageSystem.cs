@@ -4,7 +4,8 @@
   using System.Collections.Generic;
   using System.Linq;
   using AtomicTorch.CBND.CoreMod.Characters;
-  using AtomicTorch.CBND.CoreMod.Characters.Player;
+    using AtomicTorch.CBND.CoreMod.Characters.Mobs;
+    using AtomicTorch.CBND.CoreMod.Characters.Player;
   using AtomicTorch.CBND.CoreMod.Items;
   using AtomicTorch.CBND.CoreMod.StaticObjects.Explosives;
   using AtomicTorch.CBND.CoreMod.Stats;
@@ -118,7 +119,14 @@
 
       if (weaponCache.Character?.ProtoGameObject is ProtoCharacterMobEnraged && targetObject is IStaticWorldObject worldObj)
       {
-        totalDamage *= 10;
+        if (weaponCache.Character?.ProtoGameObject is MobEnragedPragmiumBear || weaponCache.Character?.ProtoGameObject is MobEnragedLargePragmiumBear)
+        {
+            totalDamage *= 2;
+        }
+        else
+        {
+            totalDamage *= 10;
+        }
       }
 
 

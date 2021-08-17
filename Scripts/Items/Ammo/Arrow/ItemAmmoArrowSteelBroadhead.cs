@@ -32,10 +32,10 @@
             out double rangeMax,
             DamageDistribution damageDistribution)
         {
-            damageValue = 30;
+            damageValue = 22;
             armorPiercingCoef = 0.0;
-            finalDamageMultiplier = 1.5;
-            rangeMax = 10;
+            finalDamageMultiplier = 1.2;
+            rangeMax = 8;
             damageDistribution.Set(DamageType.Impact, 1);
         }
 

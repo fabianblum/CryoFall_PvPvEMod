@@ -13,13 +13,13 @@
 
     public class ItemAmmoArrowEX : ProtoItemGrenade, IAmmoArrowS
     {
-        public override double DamageRadius => 3.9;
+        public override double DamageRadius => 2.9;
 
         public const double DamageToMinerals = 2000;
 
         public override string Description => "Explosive crossbow bolt.";
 
-        public override double FireRangeMax => 9;
+        public override double FireRangeMax => 7;
 
         public override bool IsReferenceAmmo => false;
 
@@ -48,7 +48,7 @@
             out double finalDamageMultiplier,
             DamageDistribution damageDistribution)
         {
-            damageValue = 50;
+            damageValue = 25;
             armorPiercingCoef = 0;
             finalDamageMultiplier = 1;
 
@@ -59,7 +59,7 @@
             out double damageValue,
             out double defencePenetrationCoef)
         {
-            damageValue = 50;
+            damageValue = 25;
             defencePenetrationCoef = 0;
         }
 

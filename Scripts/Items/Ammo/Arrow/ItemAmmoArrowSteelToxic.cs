@@ -35,7 +35,7 @@
             damageValue = 17;
             armorPiercingCoef = 0.5;
             finalDamageMultiplier = 1.2;
-            rangeMax = 10;
+            rangeMax = 8;
             damageDistribution.Set(DamageType.Impact, 0.6)
                               .Set(DamageType.Chemical, 0.4);
         }
