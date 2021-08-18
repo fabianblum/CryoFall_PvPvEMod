@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+  <game>CryoFall</game>
+  <id>VanguardArmory</id>
+  <title>The Vanguard Armory</title>
+  <author>Salvick#3333, AnDrew0o#3066</author>
+  <description>Vanguard Armory is the first set of a whole new breed of weapons and techonlogies related to upcoming NPC factions.</description>
+  <!-- Please increment this version every time you're releasing an update -->
+  <version>0.0.1</version>
+  <!-- This date should be auto-updated if mod is packed with our special tool (coming soon) -->
+  <updated>17.08.2021</updated>
+  <!-- Mod type: 1=server, 2=client+server, 3=client -->
+  <!-- Patch Notes:
+  
+				0.0.1:
+					- Added Laser Carbine and Laser Carbine item, artwork, code, tech node, recipes and tech icons.
+  
+  -->
+  <modtype>2</modtype>
+</root>

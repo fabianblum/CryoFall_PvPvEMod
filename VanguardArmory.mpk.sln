@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31313.79
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VanguardArmory.mpk", "VanguardArmory.mpk.csproj", "{CF3FD246-6DD3-4D44-86E5-840834EE82B7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug_LibsAsProjects|Any CPU = Debug_LibsAsProjects|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF3FD246-6DD3-4D44-86E5-840834EE82B7}.Debug_LibsAsProjects|Any CPU.ActiveCfg = Debug_LibsAsProjects|Any CPU
+		{CF3FD246-6DD3-4D44-86E5-840834EE82B7}.Debug_LibsAsProjects|Any CPU.Build.0 = Debug_LibsAsProjects|Any CPU
+		{CF3FD246-6DD3-4D44-86E5-840834EE82B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF3FD246-6DD3-4D44-86E5-840834EE82B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {030EE06C-DD23-4463-8666-BFAE9CB76B04}
+	EndGlobalSection
+EndGlobal
