@@ -2,12 +2,12 @@
 {
     using AtomicTorch.CBND.CoreMod.CraftRecipes;
 
-    public class TechNodeLaserBeam : TechNode<TechGroupVanguardWeaponsT5>
+    public class TechNodeLaserCannon : TechNode<TechGroupVanguardWeaponsT5>
     {
         protected override void PrepareTechNode(Config config)
         {
             config.Effects
-                  .AddRecipe<RecipeLaserBeam>();
+                  .AddRecipe<RecipeLaserCannon>();
 
             //config.SetRequiredNode<TechNodeLaserBeam>(); // We will add special components for this weapons later
         }

@@ -24,13 +24,13 @@
         public override double CharacterAnimationAimingRecoilPower => 0.15;
 
         public override string Description =>
-            "Laser carbine from Vanguard Technologies. Its pragmium core allows the fastest rate of fire but makes it hard to stabilize its recoil. Anyways, its accuracy improves notably when shooting short bursts.";
+            "This laser semi-automatic carbine by Vanguard Technologies allows a double laser shot by light splitting in its pragmium crystal diffuser, though excesive vibration from its high rate of fire can produce imprevisible deviation of light which translates into extreme recoil patterns.";
 
         public override uint DurabilityMax => 800;
 
-        public override double EnergyUsePerShot => 50;
+        public override double EnergyUsePerShot => 60;
 
-        public override double FireInterval => 0.12;
+        public override double FireInterval => 0.04;
 
         public override string Name => "Laser carbine";
 
@@ -38,7 +38,11 @@
 
         public override double SpecialEffectProbability => 0.4;
 		
-		public override double FirePatternCooldownDuration => this.FireInterval + 0.06;
+		public override double FirePatternCooldownDuration => this.FireInterval + 0.10;
+
+        public override double ReadyDelayDuration => 1.0;
+		
+		public override bool IsSemiAutomatic => true;
 
         protected override WeaponFireScatterPreset PrepareFireScatterPreset()
         {
@@ -95,10 +99,10 @@
 
             if (IsServer
                 && damagedObject is ICharacter damagedCharacter
-                && RandomHelper.RollWithProbability(0.4))
+                && RandomHelper.RollWithProbability(0.2))
             {
                 damagedCharacter.ServerAddStatusEffect<StatusEffectDazed>(
-                    // add 0.4 seconds of dazed effect
+                    // add 0.2 seconds of dazed effect
                     intensity: 0.2 / StatusEffectDazed.MaxDuration);
             }
         }
@@ -127,15 +131,15 @@
         {
             damageDescription = new DamageDescription(
                 damageValue: 9,
-                armorPiercingCoef: 0.5,
-                finalDamageMultiplier: 1.5,
-                rangeMax: 10,
+                armorPiercingCoef: 0.3,
+                finalDamageMultiplier: 1.2,
+                rangeMax: 11,
                 damageDistribution: new DamageDistribution(DamageType.Heat, 1));
         }
 
         protected override ReadOnlySoundPreset<WeaponSound> PrepareSoundPresetWeapon()
         {
-            return WeaponsSoundPresets.WeaponRangedLaserRifle;
+            return WeaponsSoundPresets.WeaponRangedLaserCarbine;
         }
 
         protected override void ServerOnSpecialEffect(ICharacter damagedCharacter, double damage)

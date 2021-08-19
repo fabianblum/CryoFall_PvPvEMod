@@ -7,7 +7,7 @@
     using AtomicTorch.CBND.CoreMod.Systems;
     using AtomicTorch.CBND.CoreMod.Systems.Crafting;
 
-    public class RecipeLaserBeam : Recipe.RecipeForStationCrafting
+    public class RecipeLaserCannon : Recipe.RecipeForStationCrafting
     {
         protected override void SetupRecipe(
             StationsList stations,
@@ -22,11 +22,11 @@
             inputItems.Add<ItemIngotCopper>(count: 120);
             inputItems.Add<ItemPlastic>(count: 40);
             inputItems.Add<ItemComponentsOptical>(count: 20);
-            inputItems.Add<ItemComponentsHighTech>(count: 5);
-            inputItems.Add<ItemPowerCell>(count: 1);
+            inputItems.Add<ItemComponentsHighTech>(count: 10);
+            inputItems.Add<ItemPowerCell>(count: 3);
             inputItems.Add<ItemOrePragmium>(count: 20);
 
-            outputItems.Add<ItemLaserBeam>();
+            outputItems.Add<ItemLaserCannon>();
         }
     }
 }

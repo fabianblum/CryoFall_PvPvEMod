@@ -127,8 +127,13 @@
             = WeaponRanged.Clone()
                           .Replace(Shot, "Weapons/Vehicle/ShotEnergyCannon");
 
-        public static readonly ReadOnlySoundPreset<WeaponSound> WeaponLaserBeam
+// Mod
+        public static readonly ReadOnlySoundPreset<WeaponSound> WeaponRangedLaserCannon
             = WeaponRanged.Clone()
-                          .Replace(Shot, "Weapons/Ranged/ShotLaserBeam");
+                          .Replace(Shot, "Weapons/Ranged/ShotLaserCannon");
+
+        public static readonly ReadOnlySoundPreset<WeaponSound> WeaponRangedLaserCarbine
+            = WeaponRanged.Clone()
+                          .Replace(Shot, "Weapons/Ranged/ShotLaserCarbine");
     }
 }

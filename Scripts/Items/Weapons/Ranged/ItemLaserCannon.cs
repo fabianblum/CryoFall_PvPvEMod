@@ -14,7 +14,7 @@
     using AtomicTorch.GameEngine.Common.Helpers;
     using AtomicTorch.GameEngine.Common.Primitives;
 
-    public class ItemLaserBeam : ProtoItemWeaponRangedEnergy
+    public class ItemLaserCannon : ProtoItemWeaponRangedEnergy
     {
         private static readonly TextureResource TextureResourceBeam
             = new("FX/WeaponTraces/TraceBeamLaser.png");
@@ -24,7 +24,7 @@
         public override double CharacterAnimationAimingRecoilPower => 1.2;
 
         public override string Description =>
-            "Laser beam rifle from the Vanguard armory. Based on pragmium core technology, its energy condenser allows a high power discharge at the cost of a long cooldown between shots. ";
+            "Vanguard Technology laser cannon based on pragmium core technology, its energy condenser allows a high power discharge at the cost of a long cooldown between shots.";
 
         public override uint DurabilityMax => 400;
 
@@ -37,6 +37,8 @@
         public override float ShotVolumeMultiplier => 1.0f;
 
         public override double SpecialEffectProbability => 0.3;
+		
+		public override bool IsSemiAutomatic => false;
 
         public override void ClientOnWeaponHitOrTrace(
             ICharacter firingCharacter,
@@ -113,14 +115,14 @@
             damageDescription = new DamageDescription(
                 damageValue: 40,
                 armorPiercingCoef: 0.4,
-                finalDamageMultiplier: 1.5,
+                finalDamageMultiplier: 1.4,
                 rangeMax: 13,
                 damageDistribution: new DamageDistribution(DamageType.Heat, 1));
         }
 
         protected override ReadOnlySoundPreset<WeaponSound> PrepareSoundPresetWeapon()
         {
-			return WeaponsSoundPresets.WeaponLaserBeam;
+			return WeaponsSoundPresets.WeaponRangedLaserCannon;
         }
 
         protected override void ServerOnSpecialEffect(ICharacter damagedCharacter, double damage)

@@ -4,17 +4,29 @@
   <game>CryoFall</game>
   <id>VanguardArmory</id>
   <title>The Vanguard Armory</title>
-  <author>Salvick#3333, AnDrew0o#3066</author>
+  <author>Salvick#3333, AnDrew0o#3066, J422#1718</author>
   <description>Vanguard Armory is the first set of a whole new breed of weapons and techonlogies related to upcoming NPC factions.</description>
   <!-- Please increment this version every time you're releasing an update -->
-  <version>0.0.1</version>
+  <version>0.0.2</version>
   <!-- This date should be auto-updated if mod is packed with our special tool (coming soon) -->
   <updated>17.08.2021</updated>
   <!-- Mod type: 1=server, 2=client+server, 3=client -->
   <!-- Patch Notes:
   
+				0.0.2: 
+					- Added semi-automatic weapons system. (Thanks J422)
+					- Laser Beam renamed to Laser Cannon.
+					- Laser Cannon art details added.
+					- Laser Cannon stats balance.
+					- Added Laser Carbine custom sound.
+					- Laser Carbine description updated to match its semi-automatic functionallity.
+					- Laser Carbine stats balance.
+					
+  
 				0.0.1:
-					- Added Laser Carbine and Laser Carbine item, artwork, code, tech node, recipes and tech icons.
+					- Added Laser Carbine and Laser Beam item, code, tech node, recipes, tech icons and artwork.
+					
+					- Carbine skin by AnDreW0o.
   
   -->
   <modtype>2</modtype>
