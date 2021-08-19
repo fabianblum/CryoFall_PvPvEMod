@@ -32,7 +32,7 @@
 
         public override double FireInterval => 1.75;
 
-        public override string Name => "Laser beam";
+        public override string Name => "Laser cannon";
 
         public override float ShotVolumeMultiplier => 1.0f;
 
