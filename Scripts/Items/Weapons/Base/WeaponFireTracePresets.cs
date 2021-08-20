@@ -8,21 +8,21 @@
                   traceSpeed: 19,
                   traceSpriteWidthPixels: 250,
                   traceStartOffsetPixels: -10);
-				  
+
 		public static readonly WeaponFireTracePreset ArrowEX
             = new(traceTexturePath: "FX/WeaponTraces/TraceArrowEX",
                   hitSparksPreset: WeaponHitSparksPresets.Firearm,
                   traceSpeed: 19,
                   traceSpriteWidthPixels: 250,
                   traceStartOffsetPixels: -10);
-				  
+
         public static readonly WeaponFireTracePreset ArrowBH
             = new(traceTexturePath: "FX/WeaponTraces/TraceArrowBH",
                   hitSparksPreset: WeaponHitSparksPresets.Firearm,
                   traceSpeed: 19,
                   traceSpriteWidthPixels: 250,
                   traceStartOffsetPixels: -10);
-				  
+
         public static readonly WeaponFireTracePreset ArrowTX
             = new(traceTexturePath: "FX/WeaponTraces/TraceArrowTX",
                   hitSparksPreset: WeaponHitSparksPresets.Firearm,
