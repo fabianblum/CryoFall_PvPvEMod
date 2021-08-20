@@ -98,7 +98,7 @@ namespace AtomicTorch.CBND.CoreMod.Characters
       if (level <= 0)
         return 0;
 
-      return level - 1;
+      return (level / 10 * 3.25f) + 1;
     }
 
     private static List<int> RandomLevels = new List<int>() {
@@ -118,7 +118,7 @@ namespace AtomicTorch.CBND.CoreMod.Characters
       if (isBoss || level <= 0)
         return 0;
 
-      return (level - 1) * 0.25f;
+      return (level - 1) * 0.15f;
     }
 
     private static int GetLevelByZone(Vector2Ushort tilePosition)
