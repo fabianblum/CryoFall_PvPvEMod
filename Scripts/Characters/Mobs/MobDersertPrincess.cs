@@ -46,7 +46,7 @@
 
     // Determines how often the boss will attempt to use the nova attack (a time interval in seconds).
     private static readonly Interval<double> NovaAttackInterval
-        = new(min: 5, max: 10);
+        = new(min: 10, max: 15);
 
     private static readonly Lazy<IProtoStaticWorldObject> ProtoLootObjectLazy
         = new(GetProtoEntity<ObjectDesertPrincessRemains>);

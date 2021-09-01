@@ -21,7 +21,7 @@
     [SuppressMessage("ReSharper", "CanExtractXamlLocalizableStringCSharp")]
     public class BootstrapperServerWorld : BaseBootstrapper
     {
-        public const int MapVersion = 3;
+        public const int MapVersion = 4;
 
         public override void ServerInitialize(IServerConfiguration serverConfiguration)
         {

@@ -21,5 +21,11 @@
   
   <ItemGroup>
     <Folder Include="Scripts\StaticObjects\Structures\Misc\" />
+  </ItemGroup>    
+  
+  <ItemGroup>
+    <Page Update="UI\Controls\Game\CharacterCreation\MenuCharacterCreation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>  
 </Project>

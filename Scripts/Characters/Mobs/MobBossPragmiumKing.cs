@@ -65,9 +65,9 @@
 
     // Determines how often the boss will attempt to use the nova attack (a time interval in seconds).
     private static readonly Interval<double> NovaAttackInterval
-        = new(min: 10, max: 14);
+        = new(min: 15, max: 20);
 
-    private const int NovaAttackPerEnergyShieldAttack = 2;
+    private const int NovaAttackPerEnergyShieldAttack = 4;
 
     private static readonly Lazy<IProtoStaticWorldObject> ProtoLootObjectLazy
         = new(GetProtoEntity<ObjectPragmiumKingRemains>);
