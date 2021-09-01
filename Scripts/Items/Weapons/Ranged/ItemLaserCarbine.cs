@@ -32,7 +32,7 @@
 
         public override double FireInterval => 0.04;
 
-        public override string Name => "Laser carbine";
+        public override string Name => "Vanguard Laser carbine";
 
         public override float ShotVolumeMultiplier => 1.25f;
 

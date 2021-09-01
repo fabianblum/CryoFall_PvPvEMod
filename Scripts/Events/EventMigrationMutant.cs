@@ -20,6 +20,7 @@
   using AtomicTorch.CBND.GameApi.ServicesServer;
   using AtomicTorch.GameEngine.Common.Helpers;
   using AtomicTorch.GameEngine.Common.Primitives;
+  using AtomicTorch.CBND.GameApi.Data.State.NetSync;
   using System;
   using System.Collections.Generic;
   using AtomicTorch.CBND.GameApi.Data.State.NetSync;

@@ -82,9 +82,9 @@
     protected override void PrepareTileRequirements(ConstructionTileRequirements tileRequirements)
     {
       base.PrepareTileRequirements(tileRequirements);
-      tileRequirements.Add(LandClaimSystem.ValidatorFreeLandEvenForServer)
-                      .Add(ConstructionTileRequirements.ValidatorNotRestrictedAreaEvenForServer)
-                      .Add(ConstructionTileRequirements.ValidatorTileNotRestrictingConstructionEvenForServer);
+      tileRequirements.Add(LandClaimSystem.ValidatorFreeLandEvenForServer);
+                     // .Add(ConstructionTileRequirements.ValidatorNotRestrictedAreaEvenForServer)
+                     // .Add(ConstructionTileRequirements.ValidatorTileNotRestrictingConstructionEvenForServer);
     }
 
     protected override double ServerGetDropListProbabilityMultiplier(IStaticWorldObject mineralObject)

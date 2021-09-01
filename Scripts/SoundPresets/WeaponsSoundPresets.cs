@@ -135,5 +135,9 @@
         public static readonly ReadOnlySoundPreset<WeaponSound> WeaponRangedLaserCarbine
             = WeaponRanged.Clone()
                           .Replace(Shot, "Weapons/Ranged/ShotLaserCarbine");
+
+        public static readonly ReadOnlySoundPreset<WeaponSound> WeaponRangedStunPistol
+            = WeaponRanged.Clone()
+                          .Replace(Shot, "Weapons/Ranged/ShotStunPlasma");
     }
 }
