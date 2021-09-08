@@ -9,7 +9,11 @@
         {
             config.Effects
                   .AddRecipe<RecipeSuperHeavySuit>()
-				  .AddRecipe<RecipeRepairSuperHeavySuit>();
+                  .AddRecipe<RecipeSuperHeavySuitlvl2>()
+                  .AddRecipe<RecipeSuperHeavySuitlvl3>()
+                  .AddRecipe<RecipeSuperHeavySuitlvl4>()
+                  .AddRecipe<RecipeSuperHeavySuitlvl5>()
+                  .AddRecipe<RecipeRepairSuperHeavySuit>();
 
             config.SetRequiredNode<TechNodePragmiumSuit>();
         }

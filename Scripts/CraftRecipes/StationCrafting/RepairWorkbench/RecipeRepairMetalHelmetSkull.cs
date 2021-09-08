@@ -22,14 +22,14 @@
             duration = CraftingDuration.Medium;
 			
 			//Initial Item Cost.
-			inputItems.Add<ItemMetalHelmetSkull>();
+			inputItems.Add<ItemMetalHelmetSkulllvl2>();
 
             inputItems.Add<ItemIngotIron>(count: 5);
             inputItems.Add<ItemRubberVulcanized>(count: 2);
             inputItems.Add<ItemCharcoal>(count: 12);			
 			inputItems.Add<ItemCement>(count: 5);
 
-            outputItems.Add<ItemMetalHelmetSkull>();
+            outputItems.Add<ItemMetalHelmetSkulllvl2>();
         }
     }
 }

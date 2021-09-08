@@ -8,7 +8,11 @@
         {
             config.Effects
                   .AddRecipe<RecipeMachinegun300>()
-                  .AddRecipe<RecipeRepairMachinegun300>();
+                  .AddRecipe<RecipeRepairMachinegun300>()
+                  .AddRecipe<RecipeMachinegun300lvl2>()
+                  .AddRecipe<RecipeMachinegun300lvl3>()
+                  .AddRecipe<RecipeMachinegun300lvl4>()
+                  .AddRecipe<RecipeMachinegun300lvl5>();
 
             config.SetRequiredNode<TechNodeAmmo300ArmorPiercing>();
         }

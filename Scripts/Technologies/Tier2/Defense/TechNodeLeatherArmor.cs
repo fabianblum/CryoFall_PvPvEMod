@@ -8,7 +8,11 @@
         {
             config.Effects
                   .AddRecipe<RecipeLeatherArmor>()
-				  .AddRecipe<RecipeRepairLeatherArmor>();
+                  .AddRecipe<RecipeLeatherArmorlvl2>()
+                  .AddRecipe<RecipeLeatherArmorlvl3>()
+                  .AddRecipe<RecipeLeatherArmorlvl4>()
+                  .AddRecipe<RecipeLeatherArmorlvl5>()
+                  .AddRecipe<RecipeRepairLeatherArmor>();
 
             config.SetRequiredNode<TechNodeQuiltedHeadgear>();
         }

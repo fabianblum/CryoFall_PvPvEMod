@@ -23,14 +23,14 @@
             duration = CraftingDuration.Long;
 			
 			//Initial Item Cost.
-			inputItems.Add<ItemMilitaryArmor>();
+			inputItems.Add<ItemMilitaryArmorlvl2>();
 
             inputItems.Add<ItemIngotSteel>(count: 10);
             inputItems.Add<ItemThread>(count: 12);
             inputItems.Add<ItemTarpaulin>(count: 10);			
 			inputItems.Add<ItemGlue>(count: 2);
 
-            outputItems.Add<ItemMilitaryArmor>();
+            outputItems.Add<ItemMilitaryArmorlvl2>();
 			outputItems.Add<ItemBottleEmpty>();
         }
     }

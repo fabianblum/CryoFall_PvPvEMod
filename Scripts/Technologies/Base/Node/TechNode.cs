@@ -121,10 +121,9 @@
             var privateState = PlayerCharacter.GetPrivateState(character);
             var origin = privateState.Origin;
 
-            Api.Logger.Warning("origin: " + origin.ShortId);
-            if(origin.ShortId == "Trader")
+            if(null != this.dependOrigins && this.dependOrigins.Count > 0 && !this.dependOrigins.Contains(origin.ShortId))
             {
-                error = "This this tech is only for traders";
+                error = "Only for trader origin. If you want it, buy it from then";
                 return false;
             }
 

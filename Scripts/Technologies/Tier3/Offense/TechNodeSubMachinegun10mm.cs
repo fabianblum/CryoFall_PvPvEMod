@@ -8,6 +8,10 @@
         {
             config.Effects
                   .AddRecipe<RecipeSubmachinegun10mm>()
+                  .AddRecipe<RecipeSubMachinegun10mmlvl2>()
+                  .AddRecipe<RecipeSubMachinegun10mmlvl3>()
+                  .AddRecipe<RecipeSubMachinegun10mmlvl4>()
+                  .AddRecipe<RecipeSubMachinegun10mmlvl5>()
                   .AddRecipe<RecipeRepairSubmachinegun10mm>();
 
             config.SetRequiredNode<TechNodeHandgun10mm>();

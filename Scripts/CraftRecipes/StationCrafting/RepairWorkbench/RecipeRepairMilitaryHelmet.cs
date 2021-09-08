@@ -23,14 +23,14 @@
             duration = CraftingDuration.Medium;
 			
 			//Initial Item Cost.
-			inputItems.Add<ItemMilitaryHelmet>();
+			inputItems.Add<ItemMilitaryHelmetlvl2>();
 
             inputItems.Add<ItemIngotSteel>(count: 10);
             inputItems.Add<ItemThread>(count: 12);
             inputItems.Add<ItemTarpaulin>(count: 10);			
 			inputItems.Add<ItemGlue>(count: 2);
 
-            outputItems.Add<ItemMilitaryHelmet>();
+            outputItems.Add<ItemMilitaryHelmetlvl2>();
 			outputItems.Add<ItemBottleEmpty>();
         }
     }

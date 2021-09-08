@@ -27,9 +27,9 @@
             inputItems.Add<ItemComponentsHighTech>(count: 5);
             inputItems.Add<ItemBallisticPlate>(count: 5);
 			inputItems.Add<ItemGlue>(count: 3);			
-			inputItems.Add<ItemSuperHeavySuit>();			
+			inputItems.Add<ItemSuperHeavySuitlvl2>();			
 
-            outputItems.Add<ItemSuperHeavySuit>();
+            outputItems.Add<ItemSuperHeavySuitlvl2>();
         }
     }
 }

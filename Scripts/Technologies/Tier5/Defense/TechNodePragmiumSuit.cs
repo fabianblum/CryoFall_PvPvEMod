@@ -8,7 +8,11 @@
         {
             config.Effects
                   .AddRecipe<RecipePragmiumSuit>()
-				  .AddRecipe<RecipeRepairPragmiumSuit>();
+                  .AddRecipe<RecipePragmiumSuitlvl2>()
+                  .AddRecipe<RecipePragmiumSuitlvl3>()
+                  .AddRecipe<RecipePragmiumSuitlvl4>()
+                  .AddRecipe<RecipePragmiumSuitlvl5>()
+                  .AddRecipe<RecipeRepairPragmiumSuit>();
         }
     }
 }

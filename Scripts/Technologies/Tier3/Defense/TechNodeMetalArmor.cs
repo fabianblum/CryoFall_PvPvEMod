@@ -8,7 +8,11 @@
         {
             config.Effects
                   .AddRecipe<RecipeMetalArmor>()
-				  .AddRecipe<RecipeRepairMetalArmor>();
+                  .AddRecipe<RecipeMetalArmorlvl2>()
+                  .AddRecipe<RecipeMetalArmorlvl3>()
+                  .AddRecipe<RecipeMetalArmorlvl4>()
+                  .AddRecipe<RecipeMetalArmorlvl5>()
+                  .AddRecipe<RecipeRepairMetalArmor>();
         }
     }
 }

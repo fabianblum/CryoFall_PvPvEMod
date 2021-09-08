@@ -8,7 +8,11 @@
         {
             config.Effects
                   .AddRecipe<RecipeMilitaryHelmet>()
-				  .AddRecipe<RecipeRepairMilitaryHelmet>();
+                  .AddRecipe<RecipeMilitaryHelmetlvl2>()
+                  .AddRecipe<RecipeMilitaryHelmetlvl3>()
+                  .AddRecipe<RecipeMilitaryHelmetlvl4>()
+                  .AddRecipe<RecipeMilitaryHelmetlvl5>()
+                  .AddRecipe<RecipeRepairMilitaryHelmet>();
 
             config.SetRequiredNode<TechNodeMilitaryArmor>();
         }

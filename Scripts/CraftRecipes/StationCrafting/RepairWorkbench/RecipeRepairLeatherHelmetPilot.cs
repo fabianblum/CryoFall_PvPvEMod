@@ -23,14 +23,14 @@
             duration = CraftingDuration.Medium;
 
 			//Initial Item Cost.
-			inputItems.Add<ItemLeatherHelmetPilot>();
+			inputItems.Add<ItemLeatherHelmetPilotlvl2>();
 
             inputItems.Add<ItemLeather>(count: 7);
             inputItems.Add<ItemThread>(count: 2);
 			inputItems.Add<ItemFibers>(count: 1);			
 			inputItems.Add<ItemGlue>(count: 1);
 			
-            outputItems.Add<ItemLeatherHelmetPilot>();
+            outputItems.Add<ItemLeatherHelmetPilotlvl2>();
 			outputItems.Add<ItemBottleEmpty>();
         }
     }

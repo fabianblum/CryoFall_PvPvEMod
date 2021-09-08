@@ -33,6 +33,8 @@
 
         private List<TechNode> listedInTechNodes;
 
+        public List<string> dependOrigins { get; set; }
+
         /// <summary>
         /// Please use specific recipes abstract types. You cannot create instances of this type yourself.
         /// </summary>
@@ -269,12 +271,20 @@
 
             this.InputItems = inputItems.AsReadOnly().ToArray();
             this.OutputItems = outputItems.AsReadOnly();
+
+            Api.Logger.Warning("[PvPvE] Prepare Origin");
+            this.PrepareOrigin();
         }
 
         protected abstract void SetupRecipe(
             out TimeSpan duration,
             InputItems inputItems,
             OutputItems outputItems);
+
+        protected virtual void PrepareOrigin()
+        {
+            dependOrigins = new List<String>();
+        }
 
         public abstract class BaseRecipeForStation : Recipe
         {
