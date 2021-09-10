@@ -23,7 +23,7 @@
 
   public abstract class ProtoObjectMineralMeteorite
       : ProtoObjectMineral
-        <ObjectMineralPragmiumSource.PrivateState,
+           <ObjectMineralMeteoritePrivateState,
             ObjectMineralMeteoritePublicState,
             DefaultMineralClientState>,
         IProtoObjectEventEntry
@@ -185,13 +185,13 @@
       // calculate how many creatures are still alive
       var mobsList = GetPrivateState(worldObject).MobsList;
 
-      var mobsAlive = 0;
+      var mobsAlive = 0; 
       for (var index = 0; index < mobsList.Count; index++)
       {
         var character = mobsList[index];
-        if (character.IsDestroyed)
+        if (character is null || character.IsDestroyed)
         {
-          mobsList.RemoveAt(index--);
+          mobsList.RemoveAt(index--); 
           continue;
         }
 
@@ -217,7 +217,7 @@
       var countToSpawn = MobsCountLimit - mobsAlive;
       if (countToSpawn <= 0)
       {
-        return;
+        return; 
       }
 
       // spawn mobs(s) nearby
