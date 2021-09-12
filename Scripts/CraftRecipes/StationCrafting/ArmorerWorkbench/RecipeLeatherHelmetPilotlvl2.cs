@@ -20,6 +20,7 @@
             duration = CraftingDuration.Medium;
 
             inputItems.Add<ItemLeatherHelmetPilotlvl2>(count: 1);
+            inputItems.Add<ItemManualLeatherHelmetPilotLvl2>(count: 1);
 
             outputItems.Add<ItemLeatherHelmetPilotlvl2>();
         }

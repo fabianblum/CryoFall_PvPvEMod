@@ -313,15 +313,13 @@ namespace AtomicTorch.CBND.CoreMod.Systems.Crafting
         }
 
         [RemoteCallSettings(timeInterval: RemoteCallSettingsAttribute.MaxTimeInterval)]
-        private double ServerRemote_RequestLearningPointsGainMultiplierRate()
+        private double ServerRemote_RequestLearningPointsGainMultiplierRate(bool isPve)
         {
-            return ServerCraftingSpeedMultiplier;
-        }
+            if(isPve) { 
+                return ServerCraftingSpeedMultiplierPve;
+            }
 
-        [RemoteCallSettings(timeInterval: RemoteCallSettingsAttribute.MaxTimeInterval)]
-        private double ServerRemote_RequestLearningPointsGainMultiplierRatePve()
-        {
-            return ServerCraftingSpeedMultiplierPve;
+            return ServerCraftingSpeedMultiplier;
         }
 
         // This bootstrapper requests CraftingSpeedMultiplier rate value from server.
@@ -339,18 +337,9 @@ namespace AtomicTorch.CBND.CoreMod.Systems.Crafting
                         return;
                     }
 
-                    var rate = 1.0;
+                    var rate = await Instance.CallServer(
+                                     _ => _.ServerRemote_RequestLearningPointsGainMultiplierRate(PvEZone.IsPvEZone(Api.Client.Characters.CurrentPlayerCharacter)));
 
-                    /*if (PvEZone.IsPvEZone(Api.Client.Characters.CurrentPlayerCharacter))
-                    {
-                        rate = await Instance.CallServer(
-                                       _ => _.ServerRemote_RequestLearningPointsGainMultiplierRatePve());
-                    }
-                    else
-                    {*/
-                        rate = await Instance.CallServer(
-                                       _ => _.ServerRemote_RequestLearningPointsGainMultiplierRate());
-                    /*}*/
 
                     // ReSharper disable once CompareOfFloatsByEqualityOperator
                     if (ClientCraftingSpeedMultiplier == rate)

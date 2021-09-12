@@ -20,6 +20,7 @@
             duration = CraftingDuration.Medium;
 
             inputItems.Add<ItemMilitaryHelmetlvl3>(count: 1);
+            inputItems.Add<ItemManualMilitaryHelmetLvl4>(count: 1);
 
             outputItems.Add<ItemMilitaryHelmetlvl4>();
         }

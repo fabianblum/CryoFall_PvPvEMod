@@ -20,6 +20,7 @@
             duration = CraftingDuration.Medium;
 
             inputItems.Add<ItemMetalArmorlvl3>(count: 1);
+            inputItems.Add<ItemManualMetalArmorLvl4>(count: 1);
 
 
             outputItems.Add<ItemMetalArmorlvl4>();

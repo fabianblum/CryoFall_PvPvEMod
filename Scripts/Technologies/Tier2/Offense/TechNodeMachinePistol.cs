@@ -7,7 +7,11 @@
         protected override void PrepareTechNode(Config config)
         {
             config.Effects
+                  .AddRecipe<RecipeMachinePistol>()
                   .AddRecipe<RecipeMachinePistollvl2>()
+                  .AddRecipe<RecipeMachinePistollvl3>()
+                  .AddRecipe<RecipeMachinePistollvl4>()
+                  .AddRecipe<RecipeMachinePistollvl5>()
                   .AddRecipe<RecipeRepairMachinePistol>();
 
             config.SetRequiredNode<TechNodeShotgunDoublebarreled>();

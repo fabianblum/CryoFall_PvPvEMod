@@ -20,6 +20,7 @@
             duration = CraftingDuration.Medium;
 
             inputItems.Add<ItemMetalHelmetClosedlvl3>(count: 1);
+            inputItems.Add<ItemManualMetalHelmetClosedLvl4>(count: 1);
 
             outputItems.Add<ItemMetalHelmetClosedlvl4>();
         }

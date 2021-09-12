@@ -20,6 +20,7 @@
             duration = CraftingDuration.Medium;
 
             inputItems.Add<ItemLeatherHelmetCowboy>(count: 1);
+            inputItems.Add<ItemManualLeatherHelmetCowboyLvl2>(count: 1);
 
             outputItems.Add<ItemLeatherHelmetCowboylvl2>();
         }

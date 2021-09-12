@@ -272,7 +272,6 @@
             this.InputItems = inputItems.AsReadOnly().ToArray();
             this.OutputItems = outputItems.AsReadOnly();
 
-            Api.Logger.Warning("[PvPvE] Prepare Origin");
             this.PrepareOrigin();
         }
 

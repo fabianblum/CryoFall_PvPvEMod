@@ -20,6 +20,7 @@
             duration = CraftingDuration.Medium;
 
             inputItems.Add<ItemMilitaryArmor>(count: 1);
+            inputItems.Add<ItemManualMilitaryArmorLvl2>(count: 1);
 
             outputItems.Add<ItemMilitaryArmorlvl2>();
         }

@@ -20,7 +20,7 @@
             duration = CraftingDuration.Long;
 
             inputItems.Add<ItemMachinePistollvl2>(count: 1);
-            //inputItems.Add<ItemIngotCopper>(count: 10);
+            inputItems.Add<ItemManualMachinePistolLvl3>(count: 1);
 
             outputItems.Add<ItemMachinePistollvl3>();
         }

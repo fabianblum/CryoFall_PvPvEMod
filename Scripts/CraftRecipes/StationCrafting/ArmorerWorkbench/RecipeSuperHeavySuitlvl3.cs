@@ -19,7 +19,8 @@
 
             duration = CraftingDuration.VeryLong;
 
-            inputItems.Add<ItemSuperHeavySuitlvl2>(count: 100);
+            inputItems.Add<ItemSuperHeavySuitlvl2>(count: 1);
+            inputItems.Add<ItemManualSuperHeavySuitLvl3>(count: 1);
 
             outputItems.Add<ItemSuperHeavySuitlvl3>();
         }

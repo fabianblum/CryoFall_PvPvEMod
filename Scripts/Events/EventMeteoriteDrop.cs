@@ -187,24 +187,24 @@
             var result = new List<(IServerZone, uint)>();
 
             AddZone(Api.GetProtoEntity<ZoneBorealForest>());
-      AddZone(Api.GetProtoEntity<ZoneBorealCoastLake>());
-      AddZone(Api.GetProtoEntity<ZoneBorealCoastOcean>());
-      AddZone(Api.GetProtoEntity<ZoneBorealMountain>());
+            AddZone(Api.GetProtoEntity<ZoneBorealCoastLake>());
+            AddZone(Api.GetProtoEntity<ZoneBorealCoastOcean>());
+            AddZone(Api.GetProtoEntity<ZoneBorealMountain>());
 
-      AddZone(Api.GetProtoEntity<ZoneTemperateForest>());
-      AddZone(Api.GetProtoEntity<ZoneTemperateClay>());
-      AddZone(Api.GetProtoEntity<ZoneTemperateCoastLake>());
-      AddZone(Api.GetProtoEntity<ZoneTemperateCoastOcean>());
-      AddZone(Api.GetProtoEntity<ZoneTemperateMeadow>());
-      AddZone(Api.GetProtoEntity<ZoneTemperateSalt>());
+            AddZone(Api.GetProtoEntity<ZoneTemperateForest>());
+            AddZone(Api.GetProtoEntity<ZoneTemperateClay>());
+            AddZone(Api.GetProtoEntity<ZoneTemperateCoastLake>());
+            AddZone(Api.GetProtoEntity<ZoneTemperateCoastOcean>());
+            AddZone(Api.GetProtoEntity<ZoneTemperateMeadow>());
+            AddZone(Api.GetProtoEntity<ZoneTemperateSalt>());
             AddZone(Api.GetProtoEntity<ZoneTemperateBarren>());
             AddZone(Api.GetProtoEntity<ZoneTemperateSwamp>());
 
-      AddZone(Api.GetProtoEntity<ZoneTropicalForest>());
-      AddZone(Api.GetProtoEntity<ZoneTropicalMountain>());
+            AddZone(Api.GetProtoEntity<ZoneTropicalForest>());
+            AddZone(Api.GetProtoEntity<ZoneTropicalMountain>());
 
-      AddZone(Api.GetProtoEntity<ZoneGenericVolcanic>());
-      AddZone(Api.GetProtoEntity<ZoneGenericRoads>());
+            AddZone(Api.GetProtoEntity<ZoneGenericVolcanic>());
+            AddZone(Api.GetProtoEntity<ZoneGenericRoads>());
 
             void AddZone(IProtoZone zone)
             {

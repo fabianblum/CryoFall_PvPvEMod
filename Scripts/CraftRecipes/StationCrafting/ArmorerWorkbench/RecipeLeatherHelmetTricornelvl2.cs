@@ -20,6 +20,7 @@
             duration = CraftingDuration.Medium;
 
             inputItems.Add<ItemLeatherHelmetTricorne>(count: 1);
+            inputItems.Add<ItemManualLeatherHelmetTricorneLvl2>(count: 1);
 
             outputItems.Add<ItemLeatherHelmetTricornelvl2>();
         }

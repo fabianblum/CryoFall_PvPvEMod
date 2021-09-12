@@ -20,8 +20,9 @@
             duration = CraftingDuration.VeryLong;
 
             inputItems.Add<ItemPragmiumSuit>(count: 1);
-            
-            
+            inputItems.Add<ItemManualPragmiumSuitLvl2>(count: 1);
+
+
             outputItems.Add<ItemPragmiumSuitlvl2>();
         }
     }

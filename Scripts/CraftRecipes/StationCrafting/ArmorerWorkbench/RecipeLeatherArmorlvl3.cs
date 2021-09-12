@@ -20,6 +20,7 @@
             duration = CraftingDuration.Medium;
 
             inputItems.Add<ItemLeatherArmorlvl2>(count: 1);
+            inputItems.Add<ItemManualLeatherArmorLvl3>(count: 1);
 
             outputItems.Add<ItemLeatherArmorlvl3>();
         }
