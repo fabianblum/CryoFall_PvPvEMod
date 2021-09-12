@@ -77,6 +77,7 @@
             DropItemConditionDelegate T4Specialized = IsAvailableT4Specialized;
             DropItemConditionDelegate T5Specialized = IsAvailableT5Specialized;
             DropItemConditionDelegate isTraderAndT3Specialized = CharacterOriginTrader.ConditionIsTraderOrigin;
+            DropItemConditionDelegate isNoTrader = CharacterOriginTrader.ConditionIsNoTraderOrigin;
 
             droplist.Outputs = 3;
 
@@ -154,10 +155,10 @@
                         .Add<ItemIngotSteel>(count: 20, weight: 1)
                 );
 
-            // Manuals for all
             droplist.Add(
                     weight: 1,
-                    probability: .25,
+                    probability: .75,
+                    condition: isTraderAndT3Specialized,
                     nestedList:
                     new DropItemsList(outputs: 1)
                         // resources / misc
@@ -192,39 +193,40 @@
             // Manuals for Traders
             droplist.Add(
                     weight: 1,
-                    probability: .25,
+                    probability: .75,
+                    condition: isTraderAndT3Specialized,
                     nestedList:
                     new DropItemsList(outputs: 1)
                         // resources / misc
-                        .Add<ItemManualLeatherArmorLvl4>(count: 1, weight: 1, condition: isTraderAndT3Specialized)
-                        .Add<ItemManualLeatherArmorLvl5>(count: 1, weight: 1, condition: isTraderAndT3Specialized)
-                        .Add<ItemManualLeatherHelmetCowboyLvl4>(count: 1, weight: 1, condition: isTraderAndT3Specialized)
-                        .Add<ItemManualLeatherHelmetCowboyLvl5>(count: 1, weight: 1, condition: isTraderAndT3Specialized)
-                        .Add<ItemManualLeatherHelmetPilotLvl4>(count: 1, weight: 1, condition: isTraderAndT3Specialized)
-                        .Add<ItemManualLeatherHelmetPilotLvl5>(count: 1, weight: 1, condition: isTraderAndT3Specialized)
-                        .Add<ItemManualLeatherHelmetTricorneLvl4>(count: 1, weight: 1, condition: isTraderAndT3Specialized)
-                        .Add<ItemManualLeatherHelmetTricorneLvl5>(count: 1, weight: 1, condition: isTraderAndT3Specialized)
-                        .Add<ItemManualMachinegun300Lvl4>(count: 1, weight: 1, condition: isTraderAndT3Specialized)
-                        .Add<ItemManualMachinegun300Lvl5>(count: 1, weight: 1, condition: isTraderAndT3Specialized)
-                        .Add<ItemManualMachinePistolLvl4>(count: 1, weight: 1, condition: isTraderAndT3Specialized)
-                        .Add<ItemManualMachinePistolLvl5>(count: 1, weight: 1, condition: isTraderAndT3Specialized)
-                        .Add<ItemManualMetalArmorLvl4>(count: 1, weight: 1, condition: isTraderAndT3Specialized)
-                        .Add<ItemManualMetalArmorLvl5>(count: 1, weight: 1, condition: isTraderAndT3Specialized)
-                        .Add<ItemManualMetalHelmetClosedLvl4>(count: 1, weight: 1, condition: isTraderAndT3Specialized)
-                        .Add<ItemManualMetalHelmetClosedLvl5>(count: 1, weight: 1, condition: isTraderAndT3Specialized)
-                        .Add<ItemManualMetalHelmetSkullLvl4>(count: 1, weight: 1, condition: isTraderAndT3Specialized)
-                        .Add<ItemManualMetalHelmetSkullLvl5>(count: 1, weight: 1, condition: isTraderAndT3Specialized)
-                        .Add<ItemManualMilitaryArmorLvl4>(count: 1, weight: 1, condition: isTraderAndT3Specialized)
-                        .Add<ItemManualMilitaryArmorLvl5>(count: 1, weight: 1, condition: isTraderAndT3Specialized)
-                        .Add<ItemManualPragmiumSuitLvl4>(count: 1, weight: 1, condition: isTraderAndT3Specialized)
-                        .Add<ItemManualPragmiumSuitLvl5>(count: 1, weight: 1, condition: isTraderAndT3Specialized)
-                        .Add<ItemManualSubMachinegun10mmLvl4>(count: 1, weight: 1, condition: isTraderAndT3Specialized)
-                        .Add<ItemManualSubMachinegun10mmLvl5>(count: 1, weight: 1, condition: isTraderAndT3Specialized)
-                        .Add<ItemManualSuperHeavySuitLvl4>(count: 1, weight: 1, condition: isTraderAndT3Specialized)
-                        .Add<ItemManualSuperHeavySuitLvl5>(count: 1, weight: 1, condition: isTraderAndT3Specialized)
+                        .Add<ItemManualLeatherArmorLvl4>(count: 1, weight: 1)
+                        .Add<ItemManualLeatherArmorLvl5>(count: 1, weight: 1)
+                        .Add<ItemManualLeatherHelmetCowboyLvl4>(count: 1, weight: 1)
+                        .Add<ItemManualLeatherHelmetCowboyLvl5>(count: 1, weight: 1)
+                        .Add<ItemManualLeatherHelmetPilotLvl4>(count: 1, weight: 1)
+                        .Add<ItemManualLeatherHelmetPilotLvl5>(count: 1, weight: 1)
+                        .Add<ItemManualLeatherHelmetTricorneLvl4>(count: 1, weight: 1)
+                        .Add<ItemManualLeatherHelmetTricorneLvl5>(count: 1, weight: 1)
+                        .Add<ItemManualMachinegun300Lvl4>(count: 1, weight: 1)
+                        .Add<ItemManualMachinegun300Lvl5>(count: 1, weight: 1)
+                        .Add<ItemManualMachinePistolLvl4>(count: 1, weight: 1)
+                        .Add<ItemManualMachinePistolLvl5>(count: 1, weight: 1)
+                        .Add<ItemManualMetalArmorLvl4>(count: 1, weight: 1)
+                        .Add<ItemManualMetalArmorLvl5>(count: 1, weight: 1)
+                        .Add<ItemManualMetalHelmetClosedLvl4>(count: 1, weight: 1)
+                        .Add<ItemManualMetalHelmetClosedLvl5>(count: 1, weight: 1)
+                        .Add<ItemManualMetalHelmetSkullLvl4>(count: 1, weight: 1)
+                        .Add<ItemManualMetalHelmetSkullLvl5>(count: 1, weight: 1)
+                        .Add<ItemManualMilitaryArmorLvl4>(count: 1, weight: 1)
+                        .Add<ItemManualMilitaryArmorLvl5>(count: 1, weight: 1)
+                        .Add<ItemManualPragmiumSuitLvl4>(count: 1, weight: 1)
+                        .Add<ItemManualPragmiumSuitLvl5>(count: 1, weight: 1)
+                        .Add<ItemManualSubMachinegun10mmLvl4>(count: 1, weight: 1)
+                        .Add<ItemManualSubMachinegun10mmLvl5>(count: 1, weight: 1)
+                        .Add<ItemManualSuperHeavySuitLvl4>(count: 1, weight: 1)
+                        .Add<ItemManualSuperHeavySuitLvl5>(count: 1, weight: 1)
                 );
 
-            
+
 
             // weapons
             /*droplist.Add(

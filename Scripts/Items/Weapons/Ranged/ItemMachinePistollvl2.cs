@@ -4,7 +4,7 @@
 
     public class ItemMachinePistollvl2 : ItemMachinePistol
     {
-        public override ushort AmmoCapacity => 12;
+        public override ushort AmmoCapacity => 16;
 
         public override string Description => base.Description + " Improved: Magazine";
 

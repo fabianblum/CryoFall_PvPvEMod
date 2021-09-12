@@ -20,6 +20,9 @@
             duration = CraftingDuration.VeryLong;
 
             inputItems.Add<ItemSubmachinegun10mmlvl2>(count: 1);
+            inputItems.Add<ItemIngotSteel>(count: 10);
+            inputItems.Add<ItemPlastic>(count: 5);
+            inputItems.Add<ItemComponentsWeapon>(count: 1);
             inputItems.Add<ItemManualSubMachinegun10mmLvl3>(count: 1);
 
             outputItems.Add<ItemSubmachinegun10mmlvl3>();

@@ -20,6 +20,11 @@
             duration = CraftingDuration.VeryLong;
 
             inputItems.Add<ItemPragmiumSuit>(count: 1);
+            inputItems.Add<ItemOrePragmium>(count: 30);
+            inputItems.Add<ItemIngotSteel>(count: 7);
+            inputItems.Add<ItemAramidFiber>(count: 7);
+            inputItems.Add<ItemComponentsHighTech>(count: 3);
+            inputItems.Add<ItemBallisticPlate>(count: 2);
             inputItems.Add<ItemManualPragmiumSuitLvl2>(count: 1);
 
 

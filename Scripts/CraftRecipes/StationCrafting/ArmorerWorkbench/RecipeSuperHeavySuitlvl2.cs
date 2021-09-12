@@ -19,7 +19,12 @@
 
             duration = CraftingDuration.VeryLong;
 
-            inputItems.Add<ItemSuperHeavySuit>(count: 100);
+            inputItems.Add<ItemSuperHeavySuit>(count: 1);
+            inputItems.Add<ItemIngotSteel>(count: 30);
+            inputItems.Add<ItemAramidFiber>(count: 7);
+            inputItems.Add<ItemKeinite>(count: 7);
+            inputItems.Add<ItemComponentsHighTech>(count: 3);
+            inputItems.Add<ItemBallisticPlate>(count: 3);
             inputItems.Add<ItemManualSuperHeavySuitLvl2>(count: 1);
 
             outputItems.Add<ItemSuperHeavySuitlvl2>();

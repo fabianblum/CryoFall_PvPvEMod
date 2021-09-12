@@ -21,6 +21,9 @@
             duration = CraftingDuration.VeryLong;
 
             inputItems.Add<ItemMachinegun300lvl3>(count: 1);
+            inputItems.Add<ItemComponentsWeapon>(count: 5);
+            inputItems.Add<ItemIngotSteel>(count: 5);
+            inputItems.Add<ItemPlastic>(count: 2);
             inputItems.Add<ItemManualMachinegun300Lvl4>(count: 1);
 
             outputItems.Add<ItemMachinegun300lvl4>();

@@ -7,7 +7,7 @@
 
         public override double DamageMultiplier => 0.95;
 
-        public override string Description => "Improved Heavy machine gun developed for high-power .300 rounds. With a custom mag.";
+        public override string Description => base.Description + ", Damage, Durability";
 
         public override uint DurabilityMax => 900;
 

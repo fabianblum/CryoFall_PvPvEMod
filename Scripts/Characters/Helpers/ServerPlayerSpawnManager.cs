@@ -12,6 +12,8 @@
     using AtomicTorch.CBND.CoreMod.Systems.CharacterCreation;
     using AtomicTorch.CBND.CoreMod.Systems.CharacterDeath;
     using AtomicTorch.CBND.CoreMod.Systems.LandClaim;
+    using AtomicTorch.CBND.CoreMod.Technologies.Tier3.Commerce;
+    using AtomicTorch.CBND.CoreMod.Technologies.Tier4.Commerce;
     using AtomicTorch.CBND.CoreMod.Zones;
     using AtomicTorch.CBND.GameApi.Data.Characters;
     using AtomicTorch.CBND.GameApi.Data.Zones;
@@ -126,6 +128,9 @@
                 Api.Server.Items.CreateItem<ItemKnifeStone>(hotbar, slotId: 2);
             }
 
+            var technologies = character.SharedGetTechnologies();
+            technologies.ServerAddGroup(Api.GetProtoEntity<TechGroupCommerceT3>());
+            technologies.ServerAddGroup(Api.GetProtoEntity<TechGroupCommerceT4>());
         }
 
         public static void Setup(IServerConfiguration serverConfiguration)

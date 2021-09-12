@@ -10,7 +10,7 @@
         protected override void PrepareZone(ZoneScripts scripts)
         {
             scripts
-                .Add(GetScript<SpawnMobsNpcSpecialist>().Configure(densityMultiplier: 2));
+                .Add(GetScript<SpawnMobsNpcSpecialist>().Configure(densityMultiplier: 3));
         }
     }
 }

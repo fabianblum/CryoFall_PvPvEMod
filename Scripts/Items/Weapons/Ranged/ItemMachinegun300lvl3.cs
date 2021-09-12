@@ -6,7 +6,7 @@
     {
         public override double AmmoReloadDuration => 2.0;
 
-        public override string Description => "Improved Heavy machine gun developed for high-power .300 rounds. With a custom mag.";
+        public override string Description => base.Description + ", Reload duration";
 
         public override string Name => "Custom Heavy machine gun LVL 3";
     }

@@ -21,6 +21,7 @@
     using AtomicTorch.CBND.CoreMod.Systems.WorldMapResourceMarks;
     using AtomicTorch.CBND.CoreMod.Systems;
     using AtomicTorch.GameEngine.Common.Primitives;
+    using AtomicTorch.CBND.CoreMod.Characters.Player;
 
     public class PvEZone : ProtoSystem<PvEZone>
     {
@@ -77,6 +78,24 @@
 
             var pveArea = ZonePvE.Instance.ServerZoneInstance;
             return pveArea.IsContainsPosition(WorldMapResourceMarksSystem.SharedGetObjectCenterPosition(worldObj));
+        }
+
+        public static bool IsNoDamageOriginInPvP(ICharacter character, IStaticWorldObject worldObj)
+        {
+            if (!PvEZoneEnabled)
+            {
+                return false;
+            }
+
+            if(IsPvEZone(worldObj))
+            {
+                return true;
+            }
+
+            var privateState = PlayerCharacter.GetPrivateState(character);
+            var origin = privateState.Origin;
+
+            return origin.ShortId == "Trader";
         }
     }
 }

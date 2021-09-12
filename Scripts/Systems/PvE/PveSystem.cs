@@ -189,7 +189,7 @@
             IStaticWorldObject targetObject,
             bool showClientNotification)
         {
-            if (!SharedIsPve(clientLogErrorIfDataIsNotYetAvailable: false) && !PvEZone.IsPvEZone(targetObject))
+            if (!SharedIsPve(clientLogErrorIfDataIsNotYetAvailable: false) && !PvEZone.IsNoDamageOriginInPvP(character, targetObject))
             {
                 return true;
             }

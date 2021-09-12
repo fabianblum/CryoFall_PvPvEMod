@@ -46,9 +46,6 @@
 
         protected override void PrepareProtoMineral(MineralDropItemsConfig config)
         {
-            DropItemConditionDelegate onlyBeforeT3SpecializedPvP = OnlyBeforeT3SpecializedAndPvP;
-            DropItemConditionDelegate isTraderAndT3Specialized = CharacterOriginTrader.ConditionIsTraderOrigin;
-
             // droplist for stage 1
             config.Stage1
             .Add<ItemOreCopperConcentrate>(count: 5)
