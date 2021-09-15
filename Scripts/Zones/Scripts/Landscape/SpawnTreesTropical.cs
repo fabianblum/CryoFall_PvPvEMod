@@ -20,18 +20,12 @@
                                  .Add<ObjectTreeTropical>()
                                  .SetCustomPaddingWithSelf(2.1);
 
-            // rubber trees
-            var rubberTrees = spawnList.CreatePreset(interval: 20, padding: 1.5)
-                                 .Add<ObjectTreeRubber>()
-                                 .SetCustomPaddingWithSelf(5);
-
             // trees with stuff & food
             spawnList.CreatePreset(interval: 8, padding: 1.5)
                      .Add<ObjectTreeBanana>()
                      .Add<ObjectTreeDurian>()
                      .SetCustomPaddingWithSelf(5)
-                     .SetCustomPaddingWith(trees, 2.1)
-                     .SetCustomPaddingWith(rubberTrees, 2.1);
+                     .SetCustomPaddingWith(trees, 2.1);
         }
     }
 }

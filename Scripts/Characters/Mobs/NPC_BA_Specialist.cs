@@ -73,6 +73,7 @@
             DropItemConditionDelegate onlyBeforeT3SpecializedPvP = OnlyBeforeT3SpecializedAndPvP;
             DropItemConditionDelegate isTraderAndT3Specialized = CharacterOriginTrader.ConditionIsTraderOrigin;
             DropItemConditionDelegate isNoTrader = CharacterOriginTrader.ConditionIsNoTraderOrigin;
+            DropItemConditionDelegate T3Specialized = IsAvailableT3Specialized;
 
             skeleton = GetProtoEntity<CharacterSkeletons.NPC_BA_Specialist>();
 
@@ -92,8 +93,8 @@
                 nestedList:
                 new DropItemsList(outputs: 1)
 
-          .Add<ItemMilitaryArmor>(count: 1, weight: 1)
-          .Add<ItemSubmachinegun10mm>(count: 1, weight: 1));
+          .Add<ItemMilitaryArmor>(count: 1, weight: 1, condition: T3Specialized)
+          .Add<ItemSubmachinegun10mm>(count: 1, weight: 1, condition: T3Specialized));
 
             // Manuals for all
             lootDroplist.Add(
