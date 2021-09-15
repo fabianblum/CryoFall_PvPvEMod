@@ -19,7 +19,9 @@
                 .Add(GetScript<SpawnBushesForestTropical>().Configure(densityMultiplier: 0.5))
                 .Add(GetScript<SpawnMushroomsTemperate>().Configure(densityMultiplier: 0.25))
                 .Add(GetScript<SpawnResourceHerbs>().Configure(densityMultiplier: 0.25))
-				.Add(GetScript<SpawnBushJelly>().Configure(densityMultiplier: 0.2));
+                .Add(GetScript<SpawnBushJelly>().Configure(densityMultiplier: 0.2))
+                .Add(GetScript<SpawnBushCoca>().Configure(densityMultiplier: 0.2))
+                .Add(GetScript<SpawnBushGanja>().Configure(densityMultiplier: 0.2));
 
             // trees
             scripts
