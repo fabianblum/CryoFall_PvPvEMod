@@ -15,7 +15,7 @@
 
         public static WindowCraftingStation Instance { get; private set; }
 
-        public WindowCraftingStationViewModel ViewModel { get; private set; }
+        public ViewModelWindowCraftingStation ViewModel { get; private set; }
 
         public static WindowCraftingStation Open(IProtoObjectCraftStation protoObjectCraftStation)
         {
@@ -40,7 +40,7 @@
             var recipesCountTotal = recipes.Count;
             RemoveLockedRecipes(recipes);
 
-            this.DataContext = this.ViewModel = new WindowCraftingStationViewModel(
+            this.DataContext = this.ViewModel = new ViewModelWindowCraftingStation(
                                    recipes,
                                    recipesCountTotal);
         }

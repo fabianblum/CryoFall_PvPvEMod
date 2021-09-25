@@ -4,14 +4,11 @@ namespace AtomicTorch.CBND.CoreMod.Systems.Crafting
     using System.Threading.Tasks;
     using AtomicTorch.CBND.CoreMod.Characters;
     using AtomicTorch.CBND.CoreMod.Characters.Player;
-    using AtomicTorch.CBND.CoreMod.Helpers;
     using AtomicTorch.CBND.CoreMod.Stats;
     using AtomicTorch.CBND.CoreMod.Systems.InteractionChecker;
     using AtomicTorch.CBND.CoreMod.Systems.Notifications;
     using AtomicTorch.CBND.GameApi.Data.Characters;
-    using AtomicTorch.CBND.GameApi.Data.State;
     using AtomicTorch.CBND.GameApi.Data.World;
-    using AtomicTorch.CBND.GameApi.Scripting;
     using AtomicTorch.CBND.GameApi.Scripting.Network;
     using AtomicTorch.GameEngine.Common.Extensions;
     using AtomicTorch.GameEngine.Common.Helpers;
@@ -72,18 +69,6 @@ namespace AtomicTorch.CBND.CoreMod.Systems.Crafting
         public static void ClientMakeItemFirstInQueue(CraftingQueueItem craftingQueueItem)
         {
             Instance.CallServer(_ => _.ServerRemote_MakeFirstInQueue(craftingQueueItem.LocalId));
-        }
-
-        public static void ClientSetLearningPointsGainMultiplier(double rate)
-        {
-            // ReSharper disable once CompareOfFloatsByEqualityOperator
-            if (ClientCraftingSpeedMultiplier == rate)
-            {
-                return;
-            }
-
-            ClientCraftingSpeedMultiplier = rate;
-            Api.SafeInvoke(ClientCraftingSpeedMultiplierChanged);
         }
 
         public static async Task ClientStartCrafting(Recipe recipe, ushort countToCraft)
