@@ -1,21 +1,17 @@
 ﻿namespace AtomicTorch.CBND.CoreMod.Characters.Mobs
 {
     using AtomicTorch.CBND.CoreMod.CharacterSkeletons;
+  using AtomicTorch.CBND.CoreMod.Items.Ammo;
+  using AtomicTorch.CBND.CoreMod.Items.Equipment;
     using AtomicTorch.CBND.CoreMod.Items.Food;
-    using AtomicTorch.CBND.CoreMod.Items.Generic;
     using AtomicTorch.CBND.CoreMod.Items.Medical;
-    using AtomicTorch.CBND.CoreMod.Items.Equipment;
-    using AtomicTorch.CBND.CoreMod.Items.Devices;
     using AtomicTorch.CBND.CoreMod.Items.Weapons.MobWeapons;
     using AtomicTorch.CBND.CoreMod.Items.Weapons.Ranged;
-    using AtomicTorch.CBND.CoreMod.Items.Ammo;
-    using AtomicTorch.CBND.GameApi.Data.Characters;
-    using AtomicTorch.CBND.CoreMod.Objects;
     using AtomicTorch.CBND.CoreMod.Skills;
     using AtomicTorch.CBND.CoreMod.SoundPresets;
     using AtomicTorch.CBND.CoreMod.Stats;
     using AtomicTorch.CBND.CoreMod.Systems.Droplists;
-    using AtomicTorch.CBND.GameApi.Data.World;
+    using AtomicTorch.CBND.GameApi.Data.Characters;
     using AtomicTorch.CBND.CoreMod.CharacterOrigins;
     using static Technologies.ServerTechTimeGateHelper;
 
@@ -75,7 +71,7 @@
             DropItemConditionDelegate isNoTrader = CharacterOriginTrader.ConditionIsNoTraderOrigin;
             DropItemConditionDelegate T3Specialized = IsAvailableT3Specialized;
 
-            skeleton = GetProtoEntity<CharacterSkeletons.NPC_BA_Specialist>();
+            skeleton = GetProtoEntity<SkeletonNPC_BA_Specialist>();
 
             // primary loot
             lootDroplist.Add(
