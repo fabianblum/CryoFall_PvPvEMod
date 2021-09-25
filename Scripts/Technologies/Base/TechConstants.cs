@@ -26,10 +26,6 @@
 
         public static readonly double ServerSkillExperienceGainMultiplier;
 
-        public static readonly double ServerLearningPointsGainMultiplierPvE;
-
-        public static readonly double ServerSkillExperienceGainMultiplierPvE;
-
         /// <summary>
         /// Determines the LP rate between skill experience to learning points.
         /// Example: with 0.01 conversion rate 100 EXP will result in 1 LP gained.
@@ -80,25 +76,6 @@
 
             ServerLearningPointsGainMultiplier = RateLearningPointsGainMultiplier.SharedValue;
             ServerSkillExperienceGainMultiplier = RateSkillExperienceGainMultiplier.SharedValue;
-            ServerLearningPointsGainMultiplierPvE = ServerRates.Get(
-                "LearningPointsGainMultiplierPvE",
-                defaultValue: Api.IsServer && SharedLocalServerHelper.IsLocalServer
-                                  ? 2.0
-                                  : 1.0,
-                @"This rate determines the learning points rate
-                  from skills experience and neural enhancer consumable item.
-                  For PvE Zone");
-
-            ServerSkillExperienceGainMultiplierPvE = ServerRates.Get(
-                "SkillExperienceGainMultiplierPvE",
-                defaultValue: Api.IsServer && SharedLocalServerHelper.IsLocalServer
-                                  ? 2.0
-                                  : 1.0,
-                @"This rate determines the skill experience gain multiplier.                
-                If you want to make faster or slower skill progression (and so faster LP gain as well)
-                you can modify this multiplier to a higher value.
-                For PvE Zone");
-
             ServerSkillExperienceToLearningPointsConversionMultiplier = 0.01 * ServerLearningPointsGainMultiplier;
         }
 

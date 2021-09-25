@@ -12,7 +12,6 @@ namespace AtomicTorch.CBND.CoreMod.Systems.Crafting
     using AtomicTorch.CBND.GameApi.Scripting.Network;
     using AtomicTorch.GameEngine.Common.Extensions;
     using AtomicTorch.GameEngine.Common.Helpers;
-    using AtomicTorch.CBND.CoreMod.Systems.PvEZone;
 
     /// <summary>
     /// Character item crafting system - processes client requests to manipulate crafting queue.
@@ -22,39 +21,6 @@ namespace AtomicTorch.CBND.CoreMod.Systems.Crafting
         public const string NotificationCraftingQueueFull_Message = "The crafting queue is full.";
 
         public const string NotificationCraftingQueueFull_Title = "Cannot add new recipe";
-
-        public static readonly double ServerCraftingSpeedMultiplier;
-
-        public static readonly double ServerCraftingSpeedMultiplierPve;
-
-        // actual value is received from the server by bootstrapper
-        public static double ClientCraftingSpeedMultiplier = 1.0;
-
-        public static double ClientCraftingSpeedMultiplierPve = 1.0;
-
-        static CraftingSystem()
-        {
-            ServerCraftingSpeedMultiplier = ServerRates.Get(
-                "CraftingSpeedMultiplier",
-                defaultValue: IsServer && SharedLocalServerHelper.IsLocalServer
-                                  ? 2.0
-                                  : 1.0,
-                @"This rate determines the crafting speed of recipes
-                  started from crafting menu or from any workbench.
-                  Does NOT apply to manufacturing structures (such as furnace) - edit ManufacturingSpeedMultiplier for these.");
-
-            ServerCraftingSpeedMultiplierPve = ServerRates.Get(
-                "CraftingSpeedMultiplierPve",
-                defaultValue: IsServer && SharedLocalServerHelper.IsLocalServer
-                                  ? 2.0
-                                  : 1.0,
-                @"This rate determines the crafting speed of recipes
-                  started from crafting menu or from any workbench.
-                  Does NOT apply to manufacturing structures (such as furnace) - edit ManufacturingSpeedMultiplier for these.
-            ");
-        }
-
-        public static event Action ClientCraftingSpeedMultiplierChanged;
 
         public static ushort ClientCurrentMaxCraftingQueueEntriesCount
             => SharedGetMaxCraftingQueueEntriesCount(Client.Characters.CurrentPlayerCharacter);
@@ -295,47 +261,6 @@ namespace AtomicTorch.CBND.CoreMod.Systems.Crafting
             }
 
             Logger.Warning("Cannot find crafting queue entry with localId=" + localId);
-        }
-
-        [RemoteCallSettings(timeInterval: RemoteCallSettingsAttribute.MaxTimeInterval)]
-        private double ServerRemote_RequestLearningPointsGainMultiplierRate(bool isPve)
-        {
-            if(isPve) { 
-                return ServerCraftingSpeedMultiplierPve;
-            }
-
-            return ServerCraftingSpeedMultiplier;
-        }
-
-        // This bootstrapper requests CraftingSpeedMultiplier rate value from server.
-        private class Bootstrapper : BaseBootstrapper
-        {
-            public override void ClientInitialize()
-            {
-                Client.Characters.CurrentPlayerCharacterChanged += Refresh;
-                Refresh();
-
-                async void Refresh()
-                {
-                    if (Api.Client.Characters.CurrentPlayerCharacter is null)
-                    {
-                        return;
-                    }
-
-                    var rate = await Instance.CallServer(
-                                     _ => _.ServerRemote_RequestLearningPointsGainMultiplierRate(PvEZone.IsPvEZone(Api.Client.Characters.CurrentPlayerCharacter)));
-
-
-                    // ReSharper disable once CompareOfFloatsByEqualityOperator
-                    if (ClientCraftingSpeedMultiplier == rate)
-                    {
-                        return;
-                    }
-
-                    ClientCraftingSpeedMultiplier = rate;
-                    Api.SafeInvoke(ClientCraftingSpeedMultiplierChanged);
-                }
-            }
         }
     }
 }

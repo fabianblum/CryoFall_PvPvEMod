@@ -14,6 +14,7 @@
     using AtomicTorch.CBND.GameApi.Data.Characters;
     using AtomicTorch.CBND.CoreMod.CharacterOrigins;
     using static Technologies.ServerTechTimeGateHelper;
+    using AtomicTorch.CBND.CoreMod.Items.Generic;
 
     public class MobNPC_BA_Specialist : ProtoCharacterRangedNPC
     {

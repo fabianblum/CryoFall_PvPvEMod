@@ -10,7 +10,7 @@
 
         public const string ChemistryDescription =
             "Working with various chemical compounds and reactions.";
-        public const string ChemistryName = 
+        public const string ChemistryName =
             "Chemistry";
 
         public const string CommerceDescription =
@@ -25,17 +25,17 @@
 
         public const string CookingDescription =
             "Contains a number of recipes to enable preparation of better food of various types.";
-        public const string CookingName = 
+        public const string CookingName =
             "Cooking";
 
         public const string CyberneticsDescription =
             "Creation and application of cybernetic and biological implants.";
-        public const string CyberneticsName = 
+        public const string CyberneticsName =
             "Cybernetics";
 
         public const string DecorationsDescription =
             "Creation of interesting decorative items to use inside your house or base.";
-        public const string DecorationsName = 
+        public const string DecorationsName =
             "Decorations";
 
         public const string DefenseDescription =
@@ -52,12 +52,12 @@
             "Energy weapons are a new technological leap from conventional firearms.";
         public const string EnergyWeaponsName =
             "Energy weapons";
-// Vanguard Armory mod
-        public const string VanguardWeaponsDescription =
-            "Vanguard technologies use very rare components made out of unusual materials.";
-        public const string VanguardWeaponsName =
-            "Vanguard weapons";
-// end
+
+        public const string EscapeDescription =
+            "Technologies necessary to finally escape this world!";
+        public const string EscapeName =
+            "Escape!";
+
         public const string ExoticWeaponsDescription =
             "Experimental weapons that are rarely used in conventional combat but could prove useful in extreme situations.";
         public const string ExoticWeaponsName =
@@ -65,7 +65,7 @@
 
         public const string FarmingDescription =
             "Preparation of seeds for planting, fertilizers and various farming techniques.";
-        public const string FarmingName = 
+        public const string FarmingName =
             "Farming";
 
         public const string FishingDescription =
@@ -75,36 +75,44 @@
 
         public const string IndustryDescription =
             "Industrial technologies related to resource processing and manufacturing as well as various industrial and technological tools.";
-        public const string IndustryName = 
+        public const string IndustryName =
             "Industry";
 
         public const string JewelryDescription =
             "Working with precious metals and jewelry.";
-        public const string JewelryName = 
+        public const string JewelryName =
             "Jewelry";
-        
+
         public const string MedicineDescription =
             "Creation of various medical items and devices.";
-        public const string MedicineName = 
+        public const string MedicineName =
             "Medicine";
-        
+
         public const string OffenseDescription =
             "Creation of various weapons and ammo types as well as other offensive technologies, devices and equipment.";
-        public const string OffenseName = 
+        public const string OffenseName =
             "Offense";
-        
+
         public const string RecreationDescription =
             "Brewing alcoholic beverages and other things of that nature.";
         public const string RecreationName =
             "Recreation";
-        
+
         public const string VehiclesDescription =
             "Technologies necessary to produce a variety of vehicles and their parts.";
         public const string VehiclesName =
             "Vehicles";
-        
+
         public const string XenoGeologyDescription =
             "Technologies necessary for exploitation of resources on alien worlds.";
         public const string XenoGeologyName =
-            "Xenogeology";}
+            "Xenogeology";
+
+        // Vanguard Armory mod
+        public const string VanguardWeaponsDescription =
+            "Vanguard technologies use very rare components made out of unusual materials.";
+        public const string VanguardWeaponsName =
+            "Vanguard weapons";
+        // end
+    }
 }

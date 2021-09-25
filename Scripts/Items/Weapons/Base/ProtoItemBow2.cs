@@ -224,7 +224,7 @@
                         endTilePosition,
                         // compensate for the server rate to ensure that
                         // it doesn't affect the number of arrows spawned
-                        probabilityMultiplier: 1.0 / DropItemsList.DropListItemsCountMultiplier,
+                        probabilityMultiplier: 1.0 /*/ DropItemsList.DropListItemsCountMultiplier*/,
                         context: new DropItemContext(weaponCache.Character),
                         out _);
 
