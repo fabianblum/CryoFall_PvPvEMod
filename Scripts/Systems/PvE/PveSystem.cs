@@ -164,11 +164,6 @@
             IStaticWorldObject targetObject,
             bool showClientNotification)
         {
-            if (!SharedIsPve(clientLogErrorIfDataIsNotYetAvailable: false) && !PvEZone.IsNoDamageOriginInPvP(character, targetObject))
-            {
-                return true;
-            }
-
             if (!WorldObjectClaimSystem.SharedIsAllowInteraction(character,
                                                                  targetObject,
                                                                  showClientNotification))
@@ -197,6 +192,11 @@
             {
                 // non-player damage is always forbidden on the owned objects
                 return false;
+            }
+
+            if (!SharedIsPve(clientLogErrorIfDataIsNotYetAvailable: false) && !PvEZone.IsNoDamageOriginInPvP(character, targetObject))
+            {
+                return true;
             }
 
             if (LandClaimSystem.SharedIsObjectInsideOwnedOrFreeArea(targetObject,
