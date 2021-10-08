@@ -1,6 +1,6 @@
 ﻿namespace AtomicTorch.CBND.CoreMod.Events
 {
-  using AtomicTorch.CBND.CoreMod.Rates;
+    using AtomicTorch.CBND.CoreMod.Rates;
     using AtomicTorch.CBND.CoreMod.StaticObjects.Misc.Events;
     using AtomicTorch.CBND.CoreMod.Systems.PvE;
     using AtomicTorch.CBND.CoreMod.Triggers;
@@ -11,9 +11,9 @@
     using AtomicTorch.CBND.GameApi.Scripting;
     using AtomicTorch.GameEngine.Common.Helpers;
     using AtomicTorch.GameEngine.Common.Primitives;
-  using System;
-  using System.Collections.Generic;
-  using System.Linq;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class EventMeteoriteDrop : ProtoEventDrop
     {
@@ -28,13 +28,13 @@
         @"Meteorites have fallen in the highlighted map area.
               [br]Rush in to mine some rare minerals!";
 
-    public override TimeSpan EventDuration => TimeSpan.FromMinutes(30);
+        public override TimeSpan EventDuration => TimeSpan.FromMinutes(30);
 
-    public override double MinDistanceBetweenSpawnedObjects => 22;
+        public override double MinDistanceBetweenSpawnedObjects => 22;
 
         public override string Name => "Meteorite";
 
-    protected override double DelayHoursSinceWipe => RateWorldEventInitialDelayMultiplier.SharedValue;
+        protected override double DelayHoursSinceWipe => RateWorldEventInitialDelayMultiplier.SharedValue;
 
         public override bool ServerIsTriggerAllowed(ProtoTrigger trigger)
         {
@@ -68,9 +68,9 @@
             return false;
         }
 
-    protected override void ServerOnDropEventStarted(ILogicObject worldEvent)
+        protected override void ServerOnDropEventStarted(ILogicObject worldEvent)
         {
-      var publicState = GetPublicState(worldEvent);
+            var publicState = GetPublicState(worldEvent);
             ServerEventLocationManager.AddUsedLocation(
                 publicState.AreaCirclePosition,
                 publicState.AreaCircleRadius * 1.2,
@@ -80,8 +80,8 @@
         protected override void ServerOnEventStartRequested(BaseTriggerConfig triggerConfig)
         {
             int locationsCount;
-      if (PveSystem.ServerIsPvE
-          && !Server.Core.IsLocalServer)
+            if (PveSystem.ServerIsPvE
+                && !Server.Core.IsLocalServer)
             {
                 locationsCount = 9;
             }
@@ -99,7 +99,7 @@
             }
         }
 
-    protected override Vector2Ushort ServerPickEventPosition(ILogicObject worldEvent)
+        protected override Vector2Ushort ServerPickEventPosition(ILogicObject worldEvent)
         {
             var world = Server.World;
             using var tempExistingEventsSameType = Api.Shared.WrapInTempList(
@@ -157,13 +157,13 @@
             Triggers triggers,
             List<IProtoWorldObject> spawnPreset)
         {
-      triggers.Add(GetTrigger<TriggerTimeInterval>()
-                       .Configure(RateWorldEventIntervalMeteoriteDrop.SharedValueIntervalHours));
+            triggers.Add(GetTrigger<TriggerTimeInterval>()
+                             .Configure(RateWorldEventIntervalMeteoriteDrop.SharedValueIntervalHours));
 
-      var meteoritesToSpawn = PveSystem.ServerIsPvE
-                                  && !Server.Core.IsLocalServer
-                                      ? 4
-                                      : 7;
+            var meteoritesToSpawn = PveSystem.ServerIsPvE
+                                        && !Server.Core.IsLocalServer
+                                            ? 4
+                                            : 7;
 
             for (var index = 0; index < meteoritesToSpawn; index++)
             {
@@ -180,7 +180,7 @@
         {
             var result = new List<(IServerZone, uint)>();
 
-      //MOD
+            //MOD
             AddZone(Api.GetProtoEntity<ZoneBorealForest>());
             AddZone(Api.GetProtoEntity<ZoneBorealCoastLake>());
             AddZone(Api.GetProtoEntity<ZoneBorealCoastOcean>());

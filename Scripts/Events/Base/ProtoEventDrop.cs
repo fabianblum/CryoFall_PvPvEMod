@@ -230,7 +230,7 @@
             publicState.ObjectsTotal = (byte)Math.Min(byte.MaxValue,   totalCount);
         }
 
-        private static IWorldObject ServerTrySpawn(IProtoWorldObject protoObjectToSpawn, Vector2Ushort spawnPosition)
+        protected static IWorldObject ServerTrySpawn(IProtoWorldObject protoObjectToSpawn, Vector2Ushort spawnPosition)
         {
             return protoObjectToSpawn switch
             {

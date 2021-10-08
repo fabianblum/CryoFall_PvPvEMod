@@ -8,6 +8,7 @@
     using AtomicTorch.CBND.CoreMod.Items.Tools;
     using AtomicTorch.CBND.CoreMod.Items.Weapons;
     using AtomicTorch.CBND.CoreMod.Items.Weapons.Melee;
+    using AtomicTorch.CBND.CoreMod.Rates;
     using AtomicTorch.CBND.CoreMod.Skills;
     using AtomicTorch.CBND.CoreMod.StaticObjects.Explosives.Bombs;
     using AtomicTorch.CBND.CoreMod.Stats;
@@ -159,7 +160,7 @@
 
         protected virtual double ServerGetDropListProbabilityMultiplier(IStaticWorldObject mineralObject)
         {
-            return 1.0;
+            return RateResourcesGatherBasic.SharedValue;
         }
 
         protected virtual void ServerOnMineralStageMined(ICharacter character, IStaticWorldObject mineralObject)
@@ -263,8 +264,8 @@
         protected override void SharedCreatePhysics(CreatePhysicsData data)
         {
             data.PhysicsBody
-                .AddShapeRectangle(size: (1, 0.5),    offset: (0.0, 0.15))
-                .AddShapeRectangle(size: (0.9, 0.8),  offset: (0.05, 0.1), group: CollisionGroups.HitboxMelee)
+                .AddShapeRectangle(size: (1, 0.5), offset: (0.0, 0.15))
+                .AddShapeRectangle(size: (0.9, 0.8), offset: (0.05, 0.1), group: CollisionGroups.HitboxMelee)
                 .AddShapeRectangle(size: (0.8, 0.15), offset: (0.1, 0.85), group: CollisionGroups.HitboxRanged)
                 .AddShapeLineSegment(point1: (0.5, 0.2), point2: (0.5, 0.85), group: CollisionGroups.HitboxRanged);
         }

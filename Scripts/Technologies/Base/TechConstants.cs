@@ -3,6 +3,8 @@
     using System.Diagnostics.CodeAnalysis;
     using AtomicTorch.CBND.CoreMod.Rates;
     using AtomicTorch.CBND.GameApi.Scripting;
+    using AtomicTorch.CBND.GameApi.Data.Characters;
+    using AtomicTorch.CBND.CoreMod.Systems.PvEZone;
 
     [SuppressMessage("ReSharper", "RedundantExplicitArraySize")]
     public static class TechConstants
@@ -26,12 +28,10 @@
 
         public static readonly double ServerSkillExperienceGainMultiplier;
 
-        /// <summary>
-        /// Determines the LP rate between skill experience to learning points.
-        /// Example: with 0.01 conversion rate 100 EXP will result in 1 LP gained.
-        /// Please note: it's affected by LearningPointsGainMultiplier which is configured in server rates config.
-        /// </summary>
-        public static readonly double ServerSkillExperienceToLearningPointsConversionMultiplier;
+        public static double GetServerSkillExperienceToLearningPointsConversionMultiplier(ICharacter character)
+        {
+            return 0.01 * PvEZoneMultiplier.getExperienceGainMultiplier(character);
+        }
 
         public static readonly double[] TierGroupPriceMultiplier
             = new double[(byte)MaxTier]
@@ -74,9 +74,10 @@
                 return;
             }
 
+
+
             ServerLearningPointsGainMultiplier = RateLearningPointsGainMultiplier.SharedValue;
             ServerSkillExperienceGainMultiplier = RateSkillExperienceGainMultiplier.SharedValue;
-            ServerSkillExperienceToLearningPointsConversionMultiplier = 0.01 * ServerLearningPointsGainMultiplier;
         }
 
         public static double ClientLearningPointsGainMultiplier

@@ -308,7 +308,7 @@
 
     protected override double ServerGetDropListProbabilityMultiplier(IStaticWorldObject staticWorldObject)
     {
-      return RateResourcesGatherSpaceDebris.SharedValue;
+      return RateResourcesGatherSpaceDebrisPvE.SharedValue;
     }
 
         protected override void ServerInitialize(ServerInitializeData data)

@@ -104,7 +104,7 @@
                                           character.TilePosition,
                                           dropItemContext,
                                           out _,
-                                          probabilityMultiplier: RateResourcesGatherCreaturesLoot.SharedValue);
+                                          probabilityMultiplier: RateResourcesGatherCreaturesLootPvE.SharedValue);
 
           dropItemResultFinal.MergeWith(dropItemResult);
         }
