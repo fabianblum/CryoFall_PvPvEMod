@@ -41,7 +41,11 @@
         }
         public static bool IsPvEZone(ICharacter character)
         {
-            if(!PvEZoneEnabled)
+            if (character is null)
+            {
+                return false;
+            }
+            if (!PvEZoneEnabled)
             {
                 return false;
             }
@@ -53,14 +57,14 @@
 
         public static bool IsPvEZone(Vector2Ushort position)
         {
-            
+
             if (!PvEZoneEnabled)
             {
                 return false;
             }
-            
 
-            if(position.Y < 9879)
+
+            if (position.Y < 9879)
             {
                 return true;
             }
@@ -73,6 +77,10 @@
 
         public static bool IsPvEZone(IStaticWorldObject worldObj)
         {
+            if (worldObj is null)
+            {
+                return false;
+            }
             if (!PvEZoneEnabled)
             {
                 return false;
@@ -84,14 +92,22 @@
 
         public static bool IsNoDamageOriginInPvP(ICharacter character, IStaticWorldObject worldObj)
         {
+            if (worldObj is null)
+            {
+                return false;
+            }
             if (!PvEZoneEnabled)
             {
                 return false;
             }
 
-            if(IsPvEZone(worldObj))
+            if (IsPvEZone(worldObj))
             {
                 return true;
+            }
+            if (character is null)
+            {
+                return false;
             }
 
             var privateState = PlayerCharacter.GetPrivateState(character);

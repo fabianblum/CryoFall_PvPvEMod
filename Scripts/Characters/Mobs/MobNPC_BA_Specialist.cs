@@ -72,7 +72,7 @@
             DropItemConditionDelegate isNoTrader = CharacterOriginTrader.ConditionIsNoTraderOrigin;
             DropItemConditionDelegate T3Specialized = IsAvailableT3Specialized;
 
-            skeleton = GetProtoEntity<SkeletonNPC_BA_Specialist>();
+            skeleton = GetProtoEntity<NPC_BA_Specialist>();
 
             // primary loot
             lootDroplist.Add(

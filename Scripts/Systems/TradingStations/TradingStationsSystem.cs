@@ -158,8 +158,6 @@
             var lots = publicState.Lots
                            ??= new NetworkSyncList<TradingStationLot>(capacity: protoTradingStation.LotsCount);
 
-            Api.Logger.Warning("[Trading] Lots: " + lots.Count);
-
             // ensure that the lots count is not exceeded
             while (lots.Count > protoTradingStation.LotsCount)
             {
@@ -405,7 +403,6 @@
             ObjectTradingStationPrivateState privateState,
             StaticObjects.Structures.TradingStations.ObjectTradingStationPublicState publicState)
         {
-            Api.Logger.Warning("[Trading] Refresh lots");
             var stockContainer = privateState.StockItemsContainer;
             privateState.LastStockItemsContainerHash = stockContainer.StateHash;
 
@@ -414,14 +411,12 @@
 
             var isStationSelling = publicState.Mode == TradingStationMode.StationSelling;
 
-            Api.Logger.Warning($"[Trading] Lot count {publicState.Lots.Count}");
             foreach (var lot in publicState.Lots)
             {
                 if (lot.State == TradingStationLotState.Disabled)
                 {
                     lot.CountAvailable = 0;
                     lot.ItemOnSale = null;
-                    Api.Logger.Warning($"[Trading] State is disabled");
                     continue;
                 }
 
@@ -430,7 +425,6 @@
                     || lot.LotQuantity < 1
                     || lot.LotQuantity > TradingStationLot.MaxLotQuantity)
                 {
-                    Api.Logger.Warning($"[Trading] Proto item is null");
                     lot.CountAvailable = 0;
                     lot.ItemOnSale = null;
                     lot.State = TradingStationLotState.Disabled;
@@ -440,7 +434,6 @@
                 uint countAvailable;
                 if (isStationSelling)
                 {
-                    Api.Logger.Warning("[Trading] Station is selling ");
                     // calculate how much items the station can sell
                     countAvailable = (uint)stockContainer.CountItemsOfType(lot.ProtoItem);
                     if (countAvailable > 0)
@@ -460,7 +453,6 @@
                         {
                             lot.CountAvailable = 0;
                             lot.State = TradingStationLotState.NoSpace;
-                            Api.Logger.Warning($"[Trading] No space");
                             continue;
                         }
                     }
@@ -471,7 +463,6 @@
                 }
                 else // if station is buying
                 {
-                    Api.Logger.Warning("[Trading] Station is buying ");
                     lot.ItemOnSale = null;
 
                     // calculate how much station can buy considering the available amount of coins and the price of the lot
@@ -645,7 +636,6 @@
                 ValidateCanAdminAndInteract(character, tradingStation);
             }
 
-            Api.Logger.Warning($"[Trading] Set trading lot  {protoItem} to lot {lotIndex} / Quantity: {lotQuantity} / PricePenny {priceCoinPenny} / PriceShiny: {priceCoinShiny}");
             var publicState = GetPublicState(tradingStation);
             var lot = publicState.Lots[lotIndex];
 
