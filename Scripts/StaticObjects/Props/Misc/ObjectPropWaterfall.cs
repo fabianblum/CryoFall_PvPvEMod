@@ -69,9 +69,9 @@
           data.GameObject,
           SoundResourceActive,
           isLooped: true,
-          volume: 1.25f,
+          volume: 0.5f,
           radius: 2.5f);
-      clientState.SoundEmitter.CustomMaxDistance = 10;
+      clientState.SoundEmitter.CustomMaxDistance = 8;
     }
 
     protected override ITextureResource PrepareDefaultTexture(Type thisType)

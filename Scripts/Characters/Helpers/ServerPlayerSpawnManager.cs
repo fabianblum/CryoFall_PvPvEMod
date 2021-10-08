@@ -11,6 +11,7 @@
     using AtomicTorch.CBND.CoreMod.Items.Weapons.Ranged;
     using AtomicTorch.CBND.CoreMod.Systems.CharacterCreation;
     using AtomicTorch.CBND.CoreMod.Systems.CharacterDeath;
+    using AtomicTorch.CBND.CoreMod.Systems.CharacterDespawnSystem;
     using AtomicTorch.CBND.CoreMod.Systems.LandClaim;
     using AtomicTorch.CBND.CoreMod.Technologies.Tier3.Commerce;
     using AtomicTorch.CBND.CoreMod.Technologies.Tier4.Commerce;
@@ -53,7 +54,7 @@
             {
                 spawnZone = ZonePlayerSpawn.Instance.ServerZoneInstance;
             }
-            
+
            //var spawnZone = protoSpawnZone.ServerZoneInstance;
             if (!spawnZone.IsEmpty)
             {
@@ -143,7 +144,7 @@
 
         public static void SpawnPlayer(ICharacter character, bool isRespawn)
         {
-            
+
 
             if(!isRespawn)
             {
@@ -158,7 +159,7 @@
             else
             {
                 // first time spawn, requires character creation
-                ServerCharacterDeathMechanic.DespawnCharacter(character);
+                CharacterDespawnSystem.DespawnCharacter(character);
             }
         }
 

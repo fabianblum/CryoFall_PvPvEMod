@@ -90,6 +90,13 @@
     public bool IsDespawned { get; set; }
 
     /// <summary>
+    /// This property determines whether the character is currently in outer space.
+    /// Used together with the IsDespawned property.
+    /// </summary>
+    [SyncToClient]
+    public bool IsEscapedOnRocket { get; set; }
+
+    /// <summary>
     /// This is an AFK Mode flag which is activated when player is inactive for a while.
     /// </summary>
     [SyncToClient]
@@ -172,6 +179,7 @@
       this.Quests ??= new PlayerCharacterQuests();
       this.Achievements ??= new PlayerCharacterAchievements();
       this.CompletionistData ??= new PlayerCharacterCompletionistData();
+      this.CompletionistData.ServerInitState();
       this.DroneController ??= CharacterDroneControlSystem.ServerCreateCharacterDroneController();
 
       if (this.ServerLastActiveTime <= 0)
@@ -184,7 +192,14 @@
     {
       this.CurrentActionState?.Cancel();
       this.CurrentActionState = actionState;
+
+      if (Api.IsClient)
+      {
+        Api.Logger.Info("Current action state changed: " + actionState);
+      }
+
       actionState?.OnStart();
     }
   }
 }
+

@@ -518,15 +518,15 @@
 
             var character = data.GameObject;
             var publicState = data.PublicState;
-
+            var privateState = data.PrivateState;
+            
             if (CharacterCreationSystem.SharedIsEnabled)
             {
-                NewbieProtectionSystem.ServerRegisterNewbie(character);
-
                 publicState.IsMale = 1 == RandomHelper.Next(0, maxValueExclusive: 2); // male/female ratio: 50/50
                 publicState.FaceStyle = SharedCharacterFaceStylesProvider
                                         .GetForGender(publicState.IsMale)
                                         .GenerateRandomFace();
+                privateState.IsAppearanceSelected = false;
             }
             else // if Editor
             {
@@ -534,8 +534,8 @@
                 publicState.FaceStyle = SharedCharacterFaceStylesProvider
                                         .GetForGender(publicState.IsMale)
                                         .GetDefaultFaceInEditor();
-                data.PrivateState.IsAppearanceSelected = IsEditorModeAutoSelectingAppearanceAndOrigin;
-                data.PrivateState.Origin = FindProtoEntities<ProtoCharacterOrigin>().FirstOrDefault();
+                privateState.IsAppearanceSelected = IsEditorModeAutoSelectingAppearanceAndOrigin;
+                privateState.Origin = FindProtoEntities<ProtoCharacterOrigin>().FirstOrDefault();
             }
 
             ServerPlayerSpawnManager.ServerAddInitItems(character);
@@ -560,7 +560,7 @@
             // add all the technologies
             ConsoleCommandsSystem.SharedGetCommand<ConsoleTechAddAll>().Execute(player: character);
 
-            this.SharedRebuildFinalCacheIfNeeded(data.PrivateState, publicState);
+            this.SharedRebuildFinalCacheIfNeeded(privateState, publicState);
 
             // add all the quests (and complete them)
             ConsoleCommandsSystem.SharedGetCommand<ConsoleQuestCompleteAll>().Execute(player: character);

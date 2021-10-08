@@ -6,6 +6,7 @@
     using AtomicTorch.CBND.CoreMod.Characters;
     using AtomicTorch.CBND.CoreMod.Characters.Player;
     using AtomicTorch.CBND.CoreMod.Items;
+    using AtomicTorch.CBND.CoreMod.Rates;
     using AtomicTorch.CBND.CoreMod.Stats;
     using AtomicTorch.CBND.CoreMod.Systems.Creative;
     using AtomicTorch.CBND.CoreMod.Technologies;
@@ -183,7 +184,7 @@
             this.listedInTechNodes.AddIfNotContains(techNode);
         }
 
-        public double SharedGetDurationForPlayer(ICharacter character, bool cutForCreativeMode = true)
+        public double SharedGetDurationForPlayer(ICharacter character, bool shortenForCreativeMode = true)
         {
             if (this.RecipeType == RecipeType.Manufacturing
                 || this.RecipeType == RecipeType.ManufacturingByproduct)
@@ -192,17 +193,15 @@
             }
 
             double result;
-            if (cutForCreativeMode
+            if (shortenForCreativeMode
                 && CreativeModeSystem.SharedIsInCreativeMode(character))
             {
-                result = 0.5; // creative mode - craft in 0.5 seconds 
+                result = 0.25; // creative mode - craft nearly instantly
             }
             else
             {
                 result = this.OriginalDuration
-                         / (IsServer
-                                ? PvEZoneMultiplier.getServerCraftingSpeedMultiplier(character)
-                                : PvEZoneMultiplier.getClientCraftingSpeedMultiplier(character));
+                         / PvEZoneMultiplier.getCraftingSpeedMultiplier(character);
             }
 
             // hand or station crafting - apply crafting speed bonus
@@ -326,7 +325,7 @@
 
             protected virtual void ValidateRecipe()
             {
-                if (!(this is RecipeForManufacturingByproduct))
+                if (this is not RecipeForManufacturingByproduct)
                 {
                     // only for non-byproduct recipes
                     Api.Assert(this.StationTypes.Count > 0, "Crafting station type cannot be null.");

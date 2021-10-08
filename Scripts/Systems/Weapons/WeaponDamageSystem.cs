@@ -1,8 +1,5 @@
 ﻿namespace AtomicTorch.CBND.CoreMod.Systems.Weapons
 {
-  using System;
-  using System.Collections.Generic;
-  using System.Linq;
   using AtomicTorch.CBND.CoreMod.Characters;
     using AtomicTorch.CBND.CoreMod.Characters.Mobs;
     using AtomicTorch.CBND.CoreMod.Characters.Player;
@@ -22,7 +19,9 @@
   using AtomicTorch.CBND.GameApi.Data.World;
   using AtomicTorch.CBND.GameApi.Scripting;
   using AtomicTorch.GameEngine.Common.Helpers;
-  using HardcoreDesert.Scripts.Characters.Base;
+  using System;
+  using System.Collections.Generic;
+  using System.Linq;
 
   public static class WeaponDamageSystem
   {
@@ -159,17 +158,13 @@
                && damagingCharacter.IsNpc)
       {
         // apply creature damage multiplier
-        totalDamage *= WeaponConstants.DamageCreaturesMultiplier;
+        totalDamage *= WeaponConstants.DamageByCreaturesMultiplier;
 
-        if (damagingCharacter.ProtoGameObject
-                is IProtoCharacterMob protoCharacterMob2
-            && protoCharacterMob2.IsBoss)
+        if (damagingCharacter.ProtoGameObject is IProtoCharacterMob { IsBoss: true })
         {
           // boss could always apply damage (even to offline player characters)
         }
-        else if (targetObject is ICharacter victim
-                 && !victim.ServerIsOnline
-                 && !victim.IsNpc)
+        else if (targetObject is ICharacter { ServerIsOnline: false, IsNpc: false })
         {
           // don't deal creature damage to offline player characters
           totalDamage = 0;
@@ -271,7 +266,7 @@
 
       if (damagingCharacter is not null
           && !weaponCache.AllowNpcToNpcDamage
-          && damagingCharacter.IsNpc 
+          && damagingCharacter.IsNpc
           && (targetCharacter.IsNpc && targetCharacter.ProtoGameObject is not ProtoCharacterMobEnraged))
       {
         // no NPC-to-NPC damage
@@ -450,8 +445,8 @@
         IStaticWorldObject targetStaticWorldObject,
         double damagePreMultiplier)
     {
-      var damage =
-          protoObjectExplosive.ServerCalculateTotalDamageByExplosive(byCharacter, targetStaticWorldObject);
+      var damage = protoObjectExplosive.ServerCalculateTotalDamageByExplosive(byCharacter,
+          targetStaticWorldObject);
       damage *= damagePreMultiplier;
       return damage;
     }

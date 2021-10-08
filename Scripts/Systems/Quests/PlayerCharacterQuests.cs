@@ -40,7 +40,7 @@
         /// <summary>
         /// Please note - it will throw an exception if the reward cannot be claimed or the quest is already completed.
         /// </summary>
-        public void ServerClaimReward(IProtoQuest quest, bool ignoreTasks)
+        public void ServerClaimReward(IProtoQuest quest, bool ignoreTasks, bool provideReward)
         {
             var questEntry = this.SharedFindQuestEntry(quest, out bool questEntryIsUnlocked);
             if (questEntry is null)
@@ -66,16 +66,19 @@
 
             questEntry.ServerSetCompleted();
 
-            var rewardLearningPoints = quest.RewardLearningPoints;
-            rewardLearningPoints = (ushort)Math.Round(
+            if (provideReward)
+            {
+                var rewardLearningPoints = quest.RewardLearningPoints;
+                rewardLearningPoints = (ushort)Math.Round(
                 rewardLearningPoints * PvEZoneMultiplier.getLearningPointsGainMultiplier(Character),
-                MidpointRounding.AwayFromZero);
-            this.Character.SharedGetTechnologies()
-                .ServerAddLearningPoints(rewardLearningPoints, allowModifyingByStatsAndRates: false);
+                    MidpointRounding.AwayFromZero);
+                this.Character.SharedGetTechnologies()
+                    .ServerAddLearningPoints(rewardLearningPoints, allowModifyingByStatsAndRates: false);
 
-            Api.Logger.Important(
-                $"Quest completed and reward claimed: {quest.ShortId}. Learning points added: {rewardLearningPoints}",
-                this.Character);
+                Api.Logger.Info(
+                    $"Quest completed and reward claimed: {quest.ShortId}. Learning points added: {rewardLearningPoints}",
+                    this.Character);
+            }
         }
 
         public void ServerInit()
@@ -239,7 +242,7 @@
 
         public bool SharedHasCompletedTask(IPlayerTask task)
         {
-            if (!(task.TaskTarget is IProtoQuest quest))
+            if (task.TaskTarget is not IProtoQuest quest)
             {
                 throw new Exception("Task must have an associated quest");
             }

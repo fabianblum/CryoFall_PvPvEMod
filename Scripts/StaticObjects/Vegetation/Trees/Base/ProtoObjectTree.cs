@@ -3,6 +3,7 @@
     using AtomicTorch.CBND.CoreMod.Helpers.Client;
     using AtomicTorch.CBND.CoreMod.Items.Tools;
     using AtomicTorch.CBND.CoreMod.Items.Weapons.Melee;
+    using AtomicTorch.CBND.CoreMod.Rates;
     using AtomicTorch.CBND.CoreMod.SoundPresets;
     using AtomicTorch.CBND.CoreMod.Stats;
     using AtomicTorch.CBND.CoreMod.Systems.Notifications;
@@ -170,8 +171,8 @@
         {
             data.PhysicsBody
                 .AddShapeCircle(radius: 0.25, center: (0.5, 0.35))
-                .AddShapeRectangle(size: (0.75, 1),   offset: (0.125, 0.1), group: CollisionGroups.HitboxMelee)
-                .AddShapeRectangle(size: (0.4, 0.35), offset: (0.3, 0.9),   group: CollisionGroups.HitboxRanged);
+                .AddShapeRectangle(size: (0.75, 1), offset: (0.125, 0.1), group: CollisionGroups.HitboxMelee)
+                .AddShapeRectangle(size: (0.4, 0.35), offset: (0.3, 0.9), group: CollisionGroups.HitboxRanged);
         }
 
         // calculate a random tree scale depending on the tree position and seed

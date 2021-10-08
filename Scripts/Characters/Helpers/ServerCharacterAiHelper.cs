@@ -64,6 +64,17 @@
         ICharacter characterNpc,
         ICharacter enemyCharacter,
         bool isRangedWeapon,
+        out double distanceToEnemy,
+        out Vector2F directionToEnemyPosition,
+        out Vector2F directionToEnemyHitbox)
+    {
+      CalculateDistanceAndDirectionToEnemy(characterNpc, enemyCharacter, isRangedWeapon, out _, out distanceToEnemy, out directionToEnemyPosition, out directionToEnemyHitbox, out _, out _);
+    }
+
+    public static void CalculateDistanceAndDirectionToEnemy(
+        ICharacter characterNpc,
+        ICharacter enemyCharacter,
+        bool isRangedWeapon,
         out double distanceToOriginalTarget,
         out double distanceToTarget,
         out Vector2F directionToEnemyPosition,
@@ -207,7 +218,7 @@
         ICharacter enemy = null;
         foreach (var playerCharacter in playersInView)
         {
-          if (playerCharacter.GetPublicState<ICharacterPublicState>().IsDead)
+          if (PlayerCharacter.GetPublicState(playerCharacter).IsDead)
           {
             // do not pay attention to dead characters
             continue;

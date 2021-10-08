@@ -1,5 +1,6 @@
 ﻿namespace AtomicTorch.CBND.CoreMod.StaticObjects.Misc.Events
 {
+  using AtomicTorch.CBND.CoreMod.Characters;
   using AtomicTorch.CBND.CoreMod.Characters.Mobs;
   using AtomicTorch.CBND.CoreMod.CharacterStatusEffects;
   using AtomicTorch.CBND.CoreMod.CharacterStatusEffects.Debuffs;
@@ -7,7 +8,6 @@
   using AtomicTorch.CBND.CoreMod.Items.Tools;
   using AtomicTorch.CBND.CoreMod.Items.Weapons;
   using AtomicTorch.CBND.CoreMod.StaticObjects.Minerals;
-  using AtomicTorch.CBND.CoreMod.Systems.Droplists;
   using AtomicTorch.CBND.CoreMod.Systems.LandClaim;
   using AtomicTorch.CBND.CoreMod.Systems.NewbieProtection;
   using AtomicTorch.CBND.CoreMod.Systems.Notifications;
@@ -22,37 +22,16 @@
   using System;
 
   public abstract class ProtoObjectMineralMeteorite
-      : ProtoObjectMineral
-           <ObjectMineralMeteoritePrivateState,
-            ObjectMineralMeteoritePublicState,
-            DefaultMineralClientState>,
-        IProtoObjectEventEntry
+        : ProtoObjectMineral
+          <ObjectMineralMeteoritePrivateState,
+              ObjectMineralMeteoritePublicState,
+              DefaultMineralClientState>,
+          IProtoObjectEventEntry
   {
-    private readonly double serverRateLootCountMultiplier;
 
-    private readonly double serverRateLootCountMultiplierPvE;
-
-    protected ProtoObjectMineralMeteorite()
-    {
-      if (IsServer)
-      {
-        this.serverRateLootCountMultiplier = ServerRates.Get(
-            "DropListItemsCountMultiplier." + this.ShortId,
-            defaultValue: 1.0,
-            @"This rate determines the item droplist multiplier for loot in " + this.Name + ".");
-
-        this.serverRateLootCountMultiplierPvE = ServerRates.Get(
-            "DropListItemsCountMultiplierPvE." + this.ShortId,
-            defaultValue: 1.0,
-            @"This rate determines the item droplist multiplier for loot in " + this.Name + ". For PvE Zone");
-      }
-    }
-
-
+    //MOD
     // mob spawn parameters begins here //
-
-    private static readonly Lazy<IProtoCharacter> LazyProtoMob
-        = new(GetProtoEntity<MobMutantCrawler>);
+    private static readonly Lazy<IProtoCharacter> LazyProtoMob = new(GetProtoEntity<MobMutantCrawler>);
 
     private const int MobDespawnDistance = 20;
 
@@ -68,7 +47,7 @@
 
     public override bool IsAllowDroneMining => false;
 
-    public override bool IsAllowQuickMining => false;
+    public override bool IsAllowQuickMining => true;
 
     public abstract double ServerCooldownDuration { get; }
 
@@ -83,16 +62,10 @@
     {
       base.PrepareTileRequirements(tileRequirements);
       tileRequirements.Add(LandClaimSystem.ValidatorFreeLandEvenForServer);
-                     // .Add(ConstructionTileRequirements.ValidatorNotRestrictedAreaEvenForServer)
-                     // .Add(ConstructionTileRequirements.ValidatorTileNotRestrictingConstructionEvenForServer);
-    }
 
-    protected override double ServerGetDropListProbabilityMultiplier(IStaticWorldObject mineralObject)
-    {
-      // compensate for the general server items drop rate
-      // but apply a separate rate
-      return PvEZoneMultiplier.getLootCountMultiplier(mineralObject, this.serverRateLootCountMultiplier, this.serverRateLootCountMultiplierPvE)
-                          / PvEZoneMultiplier.getDropListItemCountMultiplier(mineralObject);
+      //MOD
+      // .Add(ConstructionTileRequirements.ValidatorNotRestrictedAreaEvenForServer)
+      // .Add(ConstructionTileRequirements.ValidatorTileNotRestrictingConstructionEvenForServer);
     }
 
     protected override void ServerInitialize(ServerInitializeData data)
@@ -116,22 +89,23 @@
               return;
             }
 
-            ServerTrySpawnMobs(worldObject);
+
+            ServerMobSpawnHelper.ServerTrySpawnMobs(worldObject, GetPrivateState(worldObject).MobsList,
+              MobSpawnDistance, MobDespawnDistance, MobsCountLimit, ServerSpawnMobsMaxCountPerIteration, LazyProtoMob?.Value);
           });
       //
     }
 
     protected override double SharedCalculateDamageByWeapon(
-        WeaponFinalCache weaponCache,
-        double damagePreMultiplier,
-        IStaticWorldObject targetObject,
-        out double obstacleBlockDamageCoef)
+           WeaponFinalCache weaponCache,
+           double damagePreMultiplier,
+           IStaticWorldObject targetObject,
+           out double obstacleBlockDamageCoef)
     {
       var serverTime = IsServer
                            ? Server.Game.FrameTime
                            : Client.CurrentGame.ServerFrameTimeApproximated;
-
-      if (serverTime < GetPublicState(targetObject).CooldownUntilServerTime)
+      /*if (serverTime < GetPublicState(targetObject).CooldownUntilServerTime)
       {
         // too hot for mining - no damage to it
         if (IsClient
@@ -141,18 +115,15 @@
                                                     color: NotificationColor.Bad,
                                                     icon: this.Icon);
         }
-
         if (IsServer
             && weaponCache.ProtoWeapon is IProtoItemWeaponMelee
             && !weaponCache.Character.IsNpc)
         {
           weaponCache.Character.ServerAddStatusEffect<StatusEffectHeat>(intensity: 0.5);
         }
-
         obstacleBlockDamageCoef = this.ObstacleBlockDamageCoef;
         return 0;
-      }
-
+      }*/
       // meteorite cooldown finished
       if (NewbieProtectionSystem.SharedIsNewbie(weaponCache.Character))
       {
@@ -161,76 +132,14 @@
         {
           NewbieProtectionSystem.ClientNotifyNewbieCannotPerformAction(this);
         }
-
         obstacleBlockDamageCoef = 0;
         return 0;
       }
-
       return base.SharedCalculateDamageByWeapon(weaponCache,
                                                 damagePreMultiplier,
                                                 targetObject,
                                                 out obstacleBlockDamageCoef);
     }
 
-    //
-
-    private static void ServerTrySpawnMobs(IStaticWorldObject worldObject)
-    {
-      if (LandClaimSystem.SharedIsLandClaimedByAnyone(worldObject.Bounds))
-      {
-        // don't spawn mobs as the land is claimed
-        return;
-      }
-
-      // calculate how many creatures are still alive
-      var mobsList = GetPrivateState(worldObject).MobsList;
-
-      var mobsAlive = 0; 
-      for (var index = 0; index < mobsList.Count; index++)
-      {
-        var character = mobsList[index];
-        if (character is null || character.IsDestroyed)
-        {
-          mobsList.RemoveAt(index--); 
-          continue;
-        }
-
-        if (character.TilePosition.TileSqrDistanceTo(worldObject.TilePosition)
-            > MobDespawnDistance * MobDespawnDistance)
-        {
-          // the guardian mob is too far - probably lured away by a player
-          using var tempListObservers = Api.Shared.GetTempList<ICharacter>();
-          Server.World.GetScopedByPlayers(character, tempListObservers);
-          if (tempListObservers.Count == 0)
-          {
-            // despawn this mob as it's not observed by any player
-            Server.World.DestroyObject(character);
-            mobsList.RemoveAt(index--);
-          }
-
-          continue;
-        }
-
-        mobsAlive++;
-      }
-
-      var countToSpawn = MobsCountLimit - mobsAlive;
-      if (countToSpawn <= 0)
-      {
-        return; 
-      }
-
-      // spawn mobs(s) nearby
-      countToSpawn = Math.Min(countToSpawn, ServerSpawnMobsMaxCountPerIteration);
-      ServerMobSpawnHelper.ServerTrySpawnMobsCustom(protoMob: LazyProtoMob.Value,
-                                                    spawnedCollection: mobsList,
-                                                    countToSpawn,
-                                                    excludeBounds: worldObject.Bounds.Inflate(4),
-                                                    maxSpawnDistanceFromExcludeBounds: MobSpawnDistance,
-                                                    noObstaclesCheckRadius: 1.0,
-                                                    maxAttempts: 200);
-    }
-
-    //
   }
 }

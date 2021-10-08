@@ -31,11 +31,13 @@
 
         static PvEZone()
         {
-            PvEZoneEnabled = ServerRates.Get(
+            /*PvEZoneEnabled = ServerRates.Get(
                 "PvEZone",
                 defaultValue: 0,
                 @"Defines if the PvE Zone is enabled (1) or disabled (0).")
-                == 1;
+                == 1;*/
+
+            PvEZoneEnabled = true;
         }
         public static bool IsPvEZone(ICharacter character)
         {
