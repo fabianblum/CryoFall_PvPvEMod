@@ -16,6 +16,14 @@
   <Import Project="$(CryoFallSdk)Sdk.props" />    
   
   <ItemGroup>
+    <None Remove="Scripts\Events\EventNpcTrader.cs.old" />
+  </ItemGroup>    
+  
+  <ItemGroup>
+    <Compile Include="Scripts\Events\EventNpcTrader.cs.old" />
+  </ItemGroup>    
+  
+  <ItemGroup>
     <Folder Include="Scripts\StaticObjects\Structures\Misc\" />
   </ItemGroup>    
   
