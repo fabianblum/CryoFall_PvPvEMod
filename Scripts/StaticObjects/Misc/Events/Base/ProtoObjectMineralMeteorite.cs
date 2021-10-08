@@ -47,7 +47,7 @@
 
     public override bool IsAllowDroneMining => false;
 
-    public override bool IsAllowQuickMining => false;
+    public override bool IsAllowQuickMining => true;
 
     public abstract double ServerCooldownDuration { get; }
 
@@ -105,7 +105,7 @@
       var serverTime = IsServer
                            ? Server.Game.FrameTime
                            : Client.CurrentGame.ServerFrameTimeApproximated;
-      if (serverTime < GetPublicState(targetObject).CooldownUntilServerTime)
+      /*if (serverTime < GetPublicState(targetObject).CooldownUntilServerTime)
       {
         // too hot for mining - no damage to it
         if (IsClient
@@ -123,7 +123,7 @@
         }
         obstacleBlockDamageCoef = this.ObstacleBlockDamageCoef;
         return 0;
-      }
+      }*/
       // meteorite cooldown finished
       if (NewbieProtectionSystem.SharedIsNewbie(weaponCache.Character))
       {

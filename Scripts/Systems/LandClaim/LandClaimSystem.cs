@@ -889,7 +889,12 @@
 
         public static event DelegateServerRaidBlockStartedOrExtended ServerRaidBlockStartedOrExtended;
 
-        public override string Name => "Land claim system";
+    public static void ClientCannotInteractNotOwner(IStaticWorldObject worldObject)
+    {
+      CannotInteractMessageDisplay.ClientOnCannotInteract(worldObject,
+                                                          ErrorNotLandOwner_Message,
+                                                          isOutOfRange: false);
+    }
 
         public static Task<LandClaimsGroupDecayInfo> ClientGetDecayInfoText(IStaticWorldObject landClaimWorldObject)
         {
@@ -1511,11 +1516,18 @@
         {
             hasNoFactionPermission = false;
             // Please note: the game already have validated that the target object is a structure
-            if (worldObject.ProtoGameObject is ObjectWallDestroyed)
+      var protoStructure = (IProtoObjectStructure)worldObject.ProtoGameObject;
+      if (protoStructure is ObjectWallDestroyed)
             {
                 // always allow deconstruct a destroyed wall object even if it's in another player's land claim
                 return true;
             }
+
+      if (!protoStructure.SharedCanDeconstruct(worldObject, character))
+      {
+        hasNoFactionPermission = false;
+        return false;
+      }
 
             if (CreativeModeSystem.SharedIsInCreativeMode(character))
             {
@@ -1568,7 +1580,7 @@
             }
 
             // no area found
-            if (worldObject.ProtoGameObject is ProtoObjectConstructionSite)
+      if (protoStructure is ProtoObjectConstructionSite)
             {
                 // can deconstruct blueprints if there is no land claim area
                 return true;
@@ -2863,9 +2875,7 @@
 
         private void ClientRemote_OnCannotInteractNotOwner(IStaticWorldObject worldObject)
         {
-            CannotInteractMessageDisplay.ClientOnCannotInteract(worldObject,
-                                                                ErrorNotLandOwner_Message,
-                                                                isOutOfRange: false);
+      ClientCannotInteractNotOwner(worldObject);
         }
 
         private void ClientRemote_OnLandClaimUpgraded(ILogicObject area)

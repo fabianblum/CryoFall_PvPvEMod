@@ -39,8 +39,6 @@
 
     private static readonly ISharedApi Shared = Api.Shared;
 
-    public override string Name => "Weapon system logic.";
-
     public static void ClientChangeWeaponFiringMode(bool isFiring)
     {
       var character = Client.Characters.CurrentPlayerCharacter;
@@ -569,6 +567,14 @@
                     && !isReloadingNow
                     && protoWeapon.SharedCanFire(character, state);
 
+      if (canFire
+          && !character.IsNpc
+          && (PlayerCharacter.GetPrivateState(character).CurrentActionState?.IsBlockingActions ?? false))
+      {
+        canFire = false;
+      }
+
+
       // perform the perk check to ensure scenarios when player cannot fire (such as a medical cooldown)
       if (canFire
           && !character.IsNpc
@@ -805,7 +811,7 @@
 
     private static void ServerPlayerOnlineStateChangedHandler(ICharacter character, bool isOnline)
     {
-      var weaponState = character.GetPrivateState<PlayerCharacterPrivateState>().WeaponState;
+      var weaponState = PlayerCharacter.GetPrivateState(character).WeaponState;
       weaponState?.ClearFiringStateData();
     }
 
@@ -1172,7 +1178,7 @@
             continue;
           }
 
-          // don't allow damage is there is no direct line of sight on physical colliders layer between the two objects
+          // don't allow damage if there is no direct line of sight on physical colliders layer between the two objects
           if (SharedHasTileObstacle(character.Position,
                                     characterTileHeight,
                                     damagedObject,
